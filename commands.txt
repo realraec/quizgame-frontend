@@ -1,0 +1,8 @@
+#clone project
+git clone https://github.com/realraec/quizgame-frontend.git
+
+#create project
+ng new quizgame-frontend --directory=./
+
+#create branch feat/boilerplate and switch on it
+git checkout -b feat/boilerplate
