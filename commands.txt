@@ -6,3 +6,26 @@ ng new quizgame-frontend --directory=./
 
 #create branch feat/boilerplate and switch on it
 git checkout -b feat/boilerplate
+
+#create module administrator 
+ng g module administrator --routing
+
+#create module intern
+ng g module intern --routing
+
+#create module shared
+ng g module shared
+
+#create navbar component
+ng g component ./shared/layout/navbar
+
+#create footer component
+ng g component ./shared/layout/footer
+
+#create dahsboard for administrator
+-go to app directory and tap:
+-ng g component administrator
+
+#create dahsboard for intern
+-go to app directory and tap:
+-ng g component intern
