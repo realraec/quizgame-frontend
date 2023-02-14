@@ -1,0 +1,35 @@
+{
+  "stagiaires":[
+    {
+      "id": 1,
+      "username":"massamba08",
+      "password":1234,
+      "firstname": "Massamba",
+      "laststname": "Thiam",
+      "email": "massambathiam@gmail.com",
+      "role": "stagiare"
+
+    },
+    {
+      "id": 2,
+      "username":"pierre02",
+      "password":1234,
+      "firstname": "Chimot",
+      "laststname": "Pierre",
+      "email": "chimotpierre@gmail.com",
+      "role": "stagiare"
+
+    },
+    {
+      "id": 3,
+      "username":"loic04",
+      "password":1234,
+      "firstname": "Saint Paul",
+      "laststname": "Loic",
+      "email": "saintpaulloic@gmail.com",
+      "compagny":"ecole_pmn",
+      "role": "stagiare"
+
+    }
+  ]
+}
