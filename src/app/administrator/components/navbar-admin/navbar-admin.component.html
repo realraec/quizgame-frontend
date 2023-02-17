@@ -1,0 +1,34 @@
+<mat-toolbar class="navbar-admin">
+  <span>QUIZGAME</span>
+  <span class="spacer"></span>
+
+  <p>
+    Gestion des stagiaires
+    <button mat-button [matMenuTriggerFor]="menu_stagiaire">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </p>
+
+  <mat-menu #menu_stagiaire="matMenu">
+    <button mat-menu-item>
+      <span>Ajouter un stagiaire</span>
+    </button>
+  </mat-menu>
+  <p>
+    Gestion des questionnaires
+    <button mat-button [matMenuTriggerFor]="menu_questionnaire">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </p>
+
+  <mat-menu #menu_questionnaire="matMenu">
+    <button mat-menu-item>
+      <span>Créer un questionnaire</span>
+    </button>
+  </mat-menu>
+  <span class="spacer"></span>
+
+  <button mat-icon-button>
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
