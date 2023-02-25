@@ -1,67 +1,31 @@
-<!-- <mat-toolbar class="navbar-admin">
-  <span>QUIZGAME</span>
-  <span class="spacer"></span>
-
-  <p>
-    Gestion des stagiaires
-    <button mat-button [matMenuTriggerFor]="menu_stagiaire">
-      <mat-icon>expand_more</mat-icon>
-    </button>
-  </p>
-
-  <mat-menu #menu_stagiaire="matMenu">
-    <button mat-menu-item (click)="goAddInternPage()">
-      <span>Ajouter un stagiaire</span>
-    </button>
-  </mat-menu>
-  <p>
-    Gestion des questionnaires
-    <button mat-button [matMenuTriggerFor]="menu_questionnaire">
-      <mat-icon>expand_more</mat-icon>
-    </button>
-  </p>
-
-  <mat-menu #menu_questionnaire="matMenu">
-    <button mat-menu-item>
-      <span>Créer un questionnaire</span>
-    </button>
-  </mat-menu>
-  <span class="spacer"></span>
-
-  <button mat-icon-button>
-    <mat-icon>logout</mat-icon>
-  </button>
-</mat-toolbar> -->
-
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary" class="navbar-admin">
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-admin">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">DEEZPRO</a>
+    <a class="navbar-brand" href="/administrator/dashboard">QUIZGAME</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link active" aria-current="page" href="/administrator/dashboard">Accueil</a>
         </li>
         <li class="nav-item dropdown">
-       
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <button mat-button>
-              <mat-icon>expand_more</mat-icon>
-            </button>          
+          <a class="nav-link dropdown-toggle"role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Gestion des stagiaires
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="/administrator/intern/create">Ajout d'un stagiaire</a></li>
+            <li><a class="dropdown-item" href="/administrator/intern/list">Liste des stagiaires</a></li>
+          </ul>
+        </li>
+   
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Gestion des questionnaires
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/administrator/quiz/list">Ajout d'un questionnaire</a></li>
+            <li><a class="dropdown-item" href="/administrator/quiz/list">Liste des stagiaires</a></li>
           </ul>
         </li>
       </ul>

@@ -3,13 +3,12 @@ import { Intern } from 'src/app/shared/models/intern.model';
 import { InternService } from 'src/app/shared/services/intern.service';
 
 @Component({
-  selector: 'app-list-stagiaires',
-  templateUrl: './list-stagiaires.component.html',
-  styleUrls: ['./list-stagiaires.component.scss'],
+  selector: 'app-list-intern',
+  templateUrl: './list-intern.component.html',
+  styleUrls: ['./list-intern.component.scss'],
 })
-export class ListStagiairesComponent implements OnInit {
+export class ListInternComponent implements OnInit {
   interns: Intern[] = [];
-  displayedColumns: string[] = ['lastname', 'firstname', 'email', 'company'];
 
   ngOnInit(): void {
     this.getAllInterns();
