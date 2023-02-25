@@ -6,14 +6,10 @@ import { Intern } from '../models/intern.model';
 @Injectable({
   providedIn: 'root'
 })
-export class InternService {
+export class LoginService {
 
   constructor(private http: HttpClient) { }
-
-
-
-  getAllInterns(){
-    return this.http.get<Intern[]>('http://localhost:8080/api/interns');
-
+  public loginUserFromRemote(user: Intern):Observable<Intern>{
+    return this.http.post<Intern>("http://localhost:8080/api/login",user);
   }
 }
