@@ -8,6 +8,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 
@@ -29,7 +32,9 @@ import {MatTableModule} from '@angular/material/table';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatSidenavModule,
+    FlexLayoutModule
   ]
 })
 export class SharedModule { }
