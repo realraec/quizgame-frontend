@@ -3,7 +3,7 @@ export interface Intern {
   username?: string;
   password?: string;
   firstname?: string;
-  laststname?: string;
+  lastname?: string;
   email?: string;
   role?: string;
   company?: string;

@@ -1,13 +1,19 @@
 .navbar-admin {
   background-color: #455bd0;
-  color: white;
+  color: white !important;
 }
 
 .spacer {
   flex: 1 1 auto;
 }
 
-p {
+a{
   font-size: 15px;
-  margin-top: 20px;
+  color: white !important;
+}
+
+
+.dropdown-menu  a{
+  font-size: 15px;
+  color: black !important;
 }

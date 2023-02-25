@@ -1,0 +1,46 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container mt-5">
+    <h2>Ajout d'un questionnaire</h2>
+    <br />
+    <div *ngIf="isSubmit && isSuccess" class="alert alert-success" role="alert">
+        Questionnaire ajouté avec succès <a href="/administrator/quiz/list">Liste des questionnaires</a>
+    </div>
+
+    <div *ngIf="isSubmit && isFailed" class="alert alert-danger" role="alert">
+        Une erreur est survenue
+    </div>
+    <form (ngSubmit)="createQuiz()" [formGroup]="createQuizForm">
+
+        <table class="table" aria-label="Ajout d'un questionnaire">
+
+            <tr>
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Titre</label>
+                        <input type="text" formControlName="title" class="form-control" id="title">
+                    </div>
+                </td>
+
+
+
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Description</label>
+                        <textarea type="text" formControlName="summary" class="form-control" id="summary"></textarea>
+                    </div>
+                </td>
+
+              
+            </tr>
+
+            
+
+        </table>
+        <div class="qg-save-button">
+            <button type="submit" class="btn qg-primary-button qg-save-button">Sauvegarder</button>
+        </div>
+    </form>
+</div>

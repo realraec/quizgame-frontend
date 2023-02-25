@@ -1,4 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.qg-primary-button {
+    background-color: #455bd0 !important;
+    color: white !important;
+}
+
+.qg-save-button {
+    text-align: center;
+}
+
+.qg-icon-edit {
+    color: #455bd0;
+}
+
+.qg-icon-trash {
+    color: #C61E1E;
+}
+

@@ -1,0 +1,72 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container mt-5">
+    <h2>Ajout d'un stagiaire</h2>
+    <br />
+    <div *ngIf="isSubmit && isSuccess" class="alert alert-success" role="alert">
+        Stagiaire ajouté avec succès <a href="/administrator/intern/list">Liste des stagiaires</a>
+    </div>
+
+    <div *ngIf="isSubmit && isFailed" class="alert alert-danger" role="alert">
+        Une erreur est survenue
+    </div>
+    <form (ngSubmit)="createIntern()" [formGroup]="createInternForm">
+
+        <table class="table" aria-label="Ajout d'un stagiaire">
+
+            <tr>
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Nom</label>
+                        <input type="text" formControlName="lastName" class="form-control" id="lastName">
+                    </div>
+                </td>
+
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Prénom</label>
+                        <input type="text" formControlName="firstName" class="form-control" id="firstName">
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Email</label>
+                        <input type="email" formControlName="email" class="form-control" id="email">
+                    </div>
+                </td>
+
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Société</label>
+                        <input type="text" formControlName="company" class="form-control" id="company">
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Nom d'utilisateur</label>
+                        <input type="text" formControlName="username" class="form-control" id="username">
+                    </div>
+                </td>
+
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Mot de passe</label>
+                        <input type="password" formControlName="password" class="form-control" id="password">
+                    </div>
+                </td>
+
+            </tr>
+
+        </table>
+        <div class="qg-save-button">
+            <button type="submit" class="btn qg-primary-button qg-save-button">Sauvegarder</button>
+        </div>
+    </form>
+</div>

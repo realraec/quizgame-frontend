@@ -1,0 +1,31 @@
+<app-navbar-admin></app-navbar-admin>
+
+<div class="container mt-5">
+
+  <button type="button" class="btn qg-primary-button" routerLink="/administrator/quiz/create"><i class="fa fa-add "></i> &nbsp; Ajouter</button>
+  <br />
+
+  <h2 class="text-center">Liste des questionnaires</h2>
+  <br />
+
+  <table class="table" aria-label="liste des stagiaires">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Titre</th>
+        <th scope="col">Description</th>
+     
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let quiz of quizzes; let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{quiz.title}}</td>
+        <td>{{quiz.summary}}</td>
+     
+        <td><i class="fa fa-user-pen qg-icon-edit"> &nbsp; </i><i class="fa-solid fa-trash qg-icon-trash"></i></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
