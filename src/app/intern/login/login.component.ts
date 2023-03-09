@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Intern } from '../shared/models/intern.model';
+import { Intern } from '../../shared/models/intern.model';
 import { Router } from '@angular/router';
-import { LoginService } from '../shared/services/login.service';
+import { LoginService } from '../../shared/services/login.service';
 
 @Component({
   selector: 'app-login',
