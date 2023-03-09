@@ -19,7 +19,7 @@
         <input type="password" [formControl]="password" class="form-control d-flex justify-content-center" id="inputPassword">
       </div>
       <div class="button d-flex justify-content-center mt-4 mr-auto">
-        <button type="button" (click)="handleSubmit()" class="btn btn-primary btn-lg ">Se connecter</button>
+        <button [routerLink]="['intern/intern']" type="button" class="btn btn-primary btn-lg ">Se connecter</button>
       </div>
     </div>
   </form>
