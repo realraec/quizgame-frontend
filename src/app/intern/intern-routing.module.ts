@@ -7,8 +7,8 @@ import { NavbarInternComponent } from './components/navbar-intern/navbar-intern.
 
 
 const routes: Routes = [
-  // {path:  '', component: LoginComponent},
- {path:  '', component: InternComponent},
+  {path:  '', component: LoginComponent},
+ {path:  'intern', component: InternComponent},
  {path:  'navbar/intern', component: NavbarInternComponent},
  {path:  'list-questionnaires', component: ListQuestionnairesComponent}
 ];
