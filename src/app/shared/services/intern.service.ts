@@ -12,19 +12,19 @@ export class InternService {
   /**
    * This method add intern in database
    * @param intern This is the intern
-   * @returns 
+   * @returns
    */
   public addIntern(intern: Intern) {
     return this.http.post<Intern>('http://localhost:8080/api/interns/create', intern);
   }
 
   /**
-   * This method return all interns 
+   * This method return all interns
    * @returns List of all interns
    */
 
   getAllInterns(){
-    return this.http.get<Intern[]>('http://localhost:8080/api/interns');
+    return this.http.get<Intern[]>('http://localhost:8080/api/quizzes');
 
   }
 }
