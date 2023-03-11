@@ -19,11 +19,30 @@
     </thead>
     <tbody>
       <tr *ngFor="let quiz of quizzes; let i=index">
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteModalLabel">Suppression</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Etes vous sûr de vouloir supprimer le questionnaire: <b> {{quiz.title}} </b>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                <button type="button" class="btn btn-danger" (click)="deleteQuiz(quiz.id!)">Oui</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <th scope="row">{{i+1}}</th>
         <td>{{quiz.title}}</td>
         <td>{{quiz.summary}}</td>
      
-        <td><i class="fa fa-user-pen qg-icon-edit"> &nbsp; </i><i class="fa-solid fa-trash qg-icon-trash"></i></td>
+        <td><i class="fa fa-user-pen qg-icon-edit" style="cursor: pointer;" routerLink="/administrator/quiz/update/{{quiz.id}}"> &nbsp; 
+        </i>
+        <i class="fa-solid fa-trash qg-icon-trash" data-bs-toggle="modal" data-bs-target="#deleteModal" class="fa-solid fa-trash qg-icon-trash" style="cursor: pointer;"></i></td>
       </tr>
 
     </tbody>

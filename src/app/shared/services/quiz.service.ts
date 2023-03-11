@@ -20,6 +20,15 @@ export class QuizService {
     );
   }
 
+  public updateQuiz(intern: Quiz , id: number){
+    return this.http.put<Quiz>('http://localhost:8080/api/quizzes/'+id, intern);
+  }
+
+  public getOneQuiz( id: number){
+    return this.http.get<Quiz>('http://localhost:8080/api/quizzes/'+id);
+  }
+
+
   /**
    * This method return all quizzes
    * @returns List of quizzes
@@ -27,4 +36,9 @@ export class QuizService {
   getAllQuizzes() {
     return this.http.get<Quiz[]>('http://localhost:8080/api/quizzes');
   }
+
+  deleteQuiz(id: number){
+    return this.http.delete('http://localhost:8080/api/quizzes/'+id)
+  }
+
 }

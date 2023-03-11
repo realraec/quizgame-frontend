@@ -18,6 +18,14 @@ export class InternService {
     return this.http.post<Intern>('http://localhost:8080/api/interns/create', intern);
   }
 
+  public updateIntern(intern: Intern , id: number){
+    return this.http.put<Intern>('http://localhost:8080/api/interns/'+id, intern);
+  }
+
+  public getOneIntern( id: number){
+    return this.http.get<Intern>('http://localhost:8080/api/interns/'+id);
+  }
+
   /**
    * This method return all interns 
    * @returns List of all interns
@@ -27,4 +35,9 @@ export class InternService {
     return this.http.get<Intern[]>('http://localhost:8080/api/interns');
 
   }
+
+  deleteIntern(id: number){
+    return this.http.delete('http://localhost:8080/api/interns/'+id)
+  }
+
 }
