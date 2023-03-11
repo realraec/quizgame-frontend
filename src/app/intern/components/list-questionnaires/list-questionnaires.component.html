@@ -1,0 +1,33 @@
+
+
+<div class="container mt-5">
+
+
+  <br />
+
+  <h2 class="text-center">Liste des questionnaires disponibles</h2>
+  <br />
+
+  <table class="table" aria-label="liste des stagiaires">
+    <thead>
+      <tr>
+        <th scope="col">Titre</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let quiz of quizzes; let i=index">
+        <!-- <th scope="row">{{i+1}}</th> -->
+        <td>{{quiz.title}}</td>
+        <td>{{quiz.summary}}</td>
+        <td><button type="button" class="btn btn-success">Démmarer</button>
+            <button hidden type="button" class="btn btn-danger">Continuer</button>
+            <button hidden type="button" class="btn btn-danger">Démmarer</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
