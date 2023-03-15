@@ -2,5 +2,5 @@ export interface Quiz {
   id?: number;
   title?: string;
   summary?: string;
-  questionsIds: string[];
+  questionsIds: number[];
 }

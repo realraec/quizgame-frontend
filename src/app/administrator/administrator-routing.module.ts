@@ -7,6 +7,9 @@ import { CreateInternComponent } from './components/intern/create-intern/create-
 import { CreateQuizComponent } from './components/quiz/create-quiz/create-quiz.component';
 import { UpdateInternComponent } from './components/intern/update-intern/update-intern.component';
 import { UpdateQuizComponent } from './components/quiz/update-quiz/update-quiz.component';
+import { ListQuestionComponent } from './components/quiz/questions/list-question/list-question.component';
+import { CreateQuestionComponent } from './components/quiz/questions/create-question/create-question.component';
+import { UpdateQuestionComponent } from './components/quiz/questions/update-question/update-question.component';
 
 const routes: Routes = [
   { path: '', component: AdministratorComponent },
@@ -16,6 +19,9 @@ const routes: Routes = [
   { path: 'quiz/list', component: ListQuizComponent },
   { path: 'quiz/create', component: CreateQuizComponent },
   { path: 'quiz/update/:id', component: UpdateQuizComponent },
+  { path: 'quiz/:id/question/list', component: ListQuestionComponent },
+  {path: 'quiz/:id/question/create', component: CreateQuestionComponent},
+  {path: 'quiz/:idQuiz/question/update/:idQuestion', component: UpdateQuestionComponent}
 
 
 ];

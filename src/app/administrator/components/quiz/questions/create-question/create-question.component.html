@@ -1,0 +1,107 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container mt-5">
+    <h2>Ajout d'une question</h2>
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <form (ngSubmit)="createQuestion()" [formGroup]="createQuestionForm">
+                <div class="mb-3">
+                    <label for="wording" class="form-label">Libellé</label>
+                    <input type="text" formControlName="wording" class="form-control" id="wordinfg">
+                </div>
+
+                <div class="mb-3">
+                    <label for="maxDurationInSeconds" class="form-label">Durée maximale(en secondes)</label>
+                    <input type="text" formControlName="maxDurationInSeconds" class="form-control"
+                        id="maxDurationInSeconds">
+                </div>
+                <div class="qg-save-button">
+                    <button type="submit" class="btn qg-primary-button qg-save-button">Sauvegarder</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-lg-6 answers-section">
+
+
+
+            <div class="modal fade" id="addAnswerModal" tabindex="-1" aria-labelledby="addAnswerModalLabel"
+                aria-hidden="true">
+                <form (ngSubmit)="addAnswer()" [formGroup]="addAnswerForm">
+
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="addAnswerModalLabel">Ajout d'une reponse</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="wording" class="form-label">Libellé</label>
+                                    <input type="text" formControlName="wording" class="form-control" id="wording">
+
+                                </div>
+
+                                <div class="form-check">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        (Bonne réponse)
+                                    </label>
+                                    <input class="form-check-input" formControlName="correct" type="checkbox"
+                                        id="flexCheckDefault">
+
+                                </div>
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                                <button type="submit" class="btn btn-success"
+                                    data-bs-dismiss="modal">Sauvegarder</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <h4 class="text-center mt-3"><b>Réponses</b></h4>
+            <p class="text-center mt-3" style="font-size: 12px;">Veuillez ajouter au minimum 2 réponses</p>
+            <div *ngFor="let response of responses" class="text-center response mt-3 mb-3"> <b>{{response.wording}}</b>
+                &nbsp;
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="deleteModalLabel">Suppression</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Etes vous sûr de vouloir supprimer la réponse : <b> {{response.wording}} </b>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                    (click)="deleteAnswer(response)">Oui</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <i data-bs-toggle="modal" [ngClass]="{'fa-solid fa-check success-check': response.correct}"
+                style="cursor: pointer;"></i>  &nbsp;
+
+                <i data-bs-toggle="modal" data-bs-target="#deleteModal" class="fa-solid fa-trash qg-icon-trash"
+                    style="cursor: pointer;"></i>
+            </div>
+
+            <div class="qg-save-button">
+                <button type="button" class="btn qg-primary-button qg-save-button mb-3" data-bs-toggle="modal"
+                    data-bs-target="#addAnswerModal">Ajouter</button>
+            </div>
+
+        </div>
+    </div>
+</div>

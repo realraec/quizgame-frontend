@@ -9,9 +9,12 @@ import { CreateInternComponent } from './components/intern/create-intern/create-
 import { CreateQuizComponent } from './components/quiz/create-quiz/create-quiz.component';
 import { UpdateInternComponent } from './components/intern/update-intern/update-intern.component';
 import { UpdateQuizComponent } from './components/quiz/update-quiz/update-quiz.component';
+import { ListQuestionComponent } from './components/quiz/questions/list-question/list-question.component';
+import { CreateQuestionComponent } from './components/quiz/questions/create-question/create-question.component';
+import { UpdateQuestionComponent } from './components/quiz/questions/update-question/update-question.component';
 
 @NgModule({
-  declarations: [AdministratorComponent, NavbarAdminComponent, ListInternComponent, ListQuizComponent, CreateInternComponent, CreateQuizComponent, UpdateInternComponent, UpdateQuizComponent],
+  declarations: [AdministratorComponent, NavbarAdminComponent, ListInternComponent, ListQuizComponent, CreateInternComponent, CreateQuizComponent, UpdateInternComponent, UpdateQuizComponent, ListQuestionComponent, CreateQuestionComponent, UpdateQuestionComponent],
   imports: [SharedModule, AdministratorRoutingModule],
 })
 export class AdministratorModule {}

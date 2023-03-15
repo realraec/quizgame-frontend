@@ -32,7 +32,7 @@ export class InternService {
    */
 
   getAllInterns(){
-    return this.http.get<Intern[]>('http://localhost:8080/api/quizzes');
+    return this.http.get<Intern[]>('http://localhost:8080/api/interns');
 
   }
 
