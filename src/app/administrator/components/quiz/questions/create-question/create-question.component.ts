@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Answer } from 'src/app/shared/models/answer.model';
 import { Question } from 'src/app/shared/models/question.model';
+import { AnswerService } from 'src/app/shared/services/answer.service';
+import { QuestionService } from 'src/app/shared/services/question.service';
 
 @Component({
   selector: 'app-create-question',
@@ -15,7 +17,8 @@ export class CreateQuestionComponent implements OnInit {
   responses: Answer[] = [];
   submittedAnswer: boolean = false;
   id!: number;
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute) {}
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private questionService : QuestionService, 
+    private answerService: AnswerService) {}
 
   ngOnInit(): void {
 
@@ -43,6 +46,10 @@ export class CreateQuestionComponent implements OnInit {
   }
 
   createQuestion() {
+    let questionAfterSubmit : Question = {
+      quizId: 0,
+      answersIds: []
+    }; 
 
     let question : Question = {
       quizId: 0,
@@ -51,7 +58,20 @@ export class CreateQuestionComponent implements OnInit {
     const formValue = this.createQuestionForm.value;
     question.wording = formValue['wording'];
     question.maxDurationInSeconds = formValue['maxDurationInSeconds'];
-    question.id
+    question.quizId = this.id;
+
+    this.questionService.addQuestion(question).subscribe(
+      {
+        next: (data) => questionAfterSubmit = data,
+        complete: () =>  this.responses.forEach( (value)=> 
+        
+        {
+          this.answerService.addAnswer(value);
+        }
+        )
+        
+      }
+    )
 
   }
 
