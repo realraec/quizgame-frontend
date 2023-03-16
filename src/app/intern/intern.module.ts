@@ -7,6 +7,8 @@ import { ListQuestionnairesComponent } from './components/list-questionnaires/li
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarInternComponent } from './components/navbar-intern/navbar-intern.component';
+import { QuestionnairesItemsComponent } from './components/questionnaires-items/questionnaires-items.component';
+
 
 
 @NgModule({
@@ -14,7 +16,8 @@ import { NavbarInternComponent } from './components/navbar-intern/navbar-intern.
     InternComponent,
     LoginComponent,
     ListQuestionnairesComponent,
-    NavbarInternComponent
+    NavbarInternComponent,
+    QuestionnairesItemsComponent,
   ],
   imports: [
     CommonModule,

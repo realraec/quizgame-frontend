@@ -22,9 +22,12 @@
         <!-- <th scope="row">{{i+1}}</th> -->
         <td>{{quiz.title}}</td>
         <td>{{quiz.summary}}</td>
-        <td><button type="button" class="btn btn-success">Démmarer</button>
+        <td>
+          <div [routerLink]="['liste/questionnaires', quiz.id]">
+            <button  type="button" class="btn btn-success">Démmarer</button>
             <button hidden type="button" class="btn btn-danger">Continuer</button>
             <button hidden type="button" class="btn btn-danger">Démmarer</button>
+          </div>
         </td>
       </tr>
 

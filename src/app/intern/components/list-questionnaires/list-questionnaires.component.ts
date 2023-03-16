@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from 'src/app/shared/models/quiz.model';
-import { QuizService } from 'src/app/shared/services/quiz.service';
+import { InternService } from 'src/app/shared/services/intern.service';
 
 @Component({
   selector: 'app-list-questionnaires',
@@ -8,19 +9,30 @@ import { QuizService } from 'src/app/shared/services/quiz.service';
   styleUrls: ['./list-questionnaires.component.scss']
 })
 export class ListQuestionnairesComponent implements OnInit{
+  idIntern!: number
   quizzes: Quiz[] = [];
-  constructor(private quizService: QuizService) {}
+
+  constructor(private route: ActivatedRoute, private router: Router, private internService: InternService) {}
+
   ngOnInit(): void {
-    this.getAllQuizzes()
+    this.onGetAllQuizzesforIntern(1)
   }
 
-  getAllQuizzes() {
-    this.quizService.getAllQuizzes().subscribe({
-      next: (data) => (this.quizzes = data),
+  onGetAllQuizzesforIntern(id: number){
+    // this.idIntern = +this.route.snapshot.params['id']
+    console.log(this.idIntern);
+    this.internService.getAllQuizzesforIntern(1).subscribe({
+      next: (data: Quiz[]) =>{
+        // this.quizzes = data.filter(q => q.id === this.idIntern)
+        this.quizzes = data
+      }
     });
-    console.log("**************salut**********");
-
-    console.log(this.quizzes);
+    console.log(this.quizzes)
+  }
+  onQuestion(){
+    // this.router.navigateByUrl("questions")
+    // console.log("click");
 
   }
+
 }
