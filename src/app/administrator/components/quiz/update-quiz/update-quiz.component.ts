@@ -24,10 +24,10 @@ export class UpdateQuizComponent {
   ) {}
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.getOneIntern(this.id);
+    this.getOneQuiz(this.id);
   }
   
-  getOneIntern(id: number) {
+  getOneQuiz(id: number) {
     this.quizService.getOneQuiz(id).subscribe({
       next: (data) => this.quiz = data,
     }

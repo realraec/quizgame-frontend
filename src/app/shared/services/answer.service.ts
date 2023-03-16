@@ -30,7 +30,7 @@ export class AnswerService {
 
  
 
-  deleteQuestion(id: number){
+  deleteAnswer(id: number){
     return this.http.delete('http://localhost:8080/api/answers/'+id)
   }
 }

@@ -4,26 +4,34 @@
     <br />
     <div class="row">
         <div class="col-6">
+            <div *ngIf="submitedQuestion && isSuccess" class="alert alert-success" role="alert">
+                Question ajoutée avec succès <a href="/administrator/quiz/{{id}}/question/list">Liste des questions</a>
+            </div>
+            <div *ngIf="submitedQuestion && (answers.length < 2)" class="alert alert-danger" role="alert">
+              Veuillez ajouter au moins deux réponses.
+            </div>
+
+            <div *ngIf="submitedQuestion && answers.length >=2  && !verifyIfCorrectAnswerExists()" class="alert alert-danger" role="alert">
+                Veuillez ajouter au moins une bonne réponse
+              </div>
             <form (ngSubmit)="createQuestion()" [formGroup]="createQuestionForm">
                 <div class="mb-3">
-                    <label for="wording" class="form-label">Libellé</label>
+                    <label for="wording" class="form-label">Libellé <b style="color: red;">*</b></label>
                     <input type="text" formControlName="wording" class="form-control" id="wordinfg">
                 </div>
 
                 <div class="mb-3">
-                    <label for="maxDurationInSeconds" class="form-label">Durée maximale(en secondes)</label>
+                    <label for="maxDurationInSeconds" class="form-label">Durée maximale(en secondes)<b style="color: red;">*</b></label>
                     <input type="text" formControlName="maxDurationInSeconds" class="form-control"
                         id="maxDurationInSeconds">
                 </div>
                 <div class="qg-save-button">
-                    <button type="submit" class="btn qg-primary-button qg-save-button">Sauvegarder</button>
+                    <button [disabled]="!createQuestionForm.valid" type="submit" class="btn qg-primary-button qg-save-button">Sauvegarder</button>
                 </div>
 
             </form>
         </div>
         <div class="col-lg-6 answers-section">
-
-
 
             <div class="modal fade" id="addAnswerModal" tabindex="-1" aria-labelledby="addAnswerModalLabel"
                 aria-hidden="true">
@@ -37,9 +45,12 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+                                <div *ngIf="submitedAnswer && correctResponseExistsError" class="alert alert-danger" role="alert">
+                                    Vous avez déjà ajouter la bonne réponse !
+                                </div>
                                 <div class="mb-3">
-                                    <label for="wording" class="form-label">Libellé</label>
-                                    <input type="text" formControlName="wording" class="form-control" id="wording">
+                                    <label for="wording" class="form-label">Libellé </label>
+                                    <input type="text" formControlName="wording" class="form-control" id="wording" autocomplete="false">
 
                                 </div>
 
@@ -48,7 +59,7 @@
                                         (Bonne réponse)
                                     </label>
                                     <input class="form-check-input" formControlName="correct" type="checkbox"
-                                        id="flexCheckDefault">
+                                        id="flexCheckDefault" autocomplete="false">
 
                                 </div>
 
@@ -56,9 +67,9 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quitter</button>
                                 <button type="submit" class="btn btn-success"
-                                    data-bs-dismiss="modal">Sauvegarder</button>
+                                    >Sauvegarder</button>
                             </div>
                         </div>
                     </div>
@@ -67,7 +78,7 @@
 
             <h4 class="text-center mt-3"><b>Réponses</b></h4>
             <p class="text-center mt-3" style="font-size: 12px;">Veuillez ajouter au minimum 2 réponses</p>
-            <div *ngFor="let response of responses" class="text-center response mt-3 mb-3"> <b>{{response.wording}}</b>
+            <div *ngFor="let answer of answers" class="text-center response mt-3 mb-3"> <b>{{answer.wording}}</b>
                 &nbsp;
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
                     aria-hidden="true">
@@ -79,18 +90,18 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Etes vous sûr de vouloir supprimer la réponse : <b> {{response.wording}} </b>
+                                Etes vous sûr de vouloir supprimer la réponse : <b> {{answer.wording}} </b>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                                    (click)="deleteAnswer(response)">Oui</button>
+                                    (click)="deleteAnswer(answer)">Oui</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <i data-bs-toggle="modal" [ngClass]="{'fa-solid fa-check success-check': response.correct}"
+                <i data-bs-toggle="modal" [ngClass]="{'fa-solid fa-check success-check': answer.correct}"
                 style="cursor: pointer;"></i>  &nbsp;
 
                 <i data-bs-toggle="modal" data-bs-target="#deleteModal" class="fa-solid fa-trash qg-icon-trash"

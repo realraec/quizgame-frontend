@@ -1,1 +1,116 @@
-<p>update-question works!</p>
+<app-navbar-admin></app-navbar-admin>
+<div class="container mt-5">
+    <h2>Mise à jour des informations</h2>
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <div *ngIf="submitedQuestion && isSuccess" class="alert alert-success" role="alert">
+                Question ajoutée avec succès <a href="/administrator/quiz/{{idQuiz}}/question/list">Liste des questions</a>
+            </div>
+            <div *ngIf="submitedQuestion && (answers.concat(newAnswers).length < 2)" class="alert alert-danger" role="alert">
+              Veuillez ajouter au moins deux réponses.
+            </div>
+
+            <div *ngIf="submitedQuestion && answers.length >=2  && !verifyIfCorrectAnswerExists()" class="alert alert-danger" role="alert">
+                Veuillez ajouter au moins une bonne réponse
+              </div>
+                <div class="mb-3">
+                    <label for="wording" class="form-label">Libellé <b style="color: red;">*</b></label>
+                    <input type="text" [(ngModel)]="question.wording" class="form-control" id="wording">
+                </div>
+
+                <div class="mb-3">
+                    <label for="maxDurationInSeconds" class="form-label">Durée maximale(en secondes)<b style="color: red;">*</b></label>
+                    <input type="text" [(ngModel)]="question.maxDurationInSeconds" class="form-control"
+                        id="maxDurationInSeconds">
+                </div>
+                <div class="qg-save-button">
+                    <button [disabled]="question.wording == '' &&  question.maxDurationInSeconds == undefined" type="button" (click)="updateQuestion()" class="btn qg-primary-button qg-save-button">Sauvegarder</button>
+                </div>
+
+        </div>
+        <div class="col-lg-6 answers-section">
+
+            <div class="modal fade" id="addAnswerModal" tabindex="-1" aria-labelledby="addAnswerModalLabel"
+                aria-hidden="true">
+                <form (ngSubmit)="addAnswer()" [formGroup]="addAnswerForm">
+
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="addAnswerModalLabel">Ajout d'une reponse</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div *ngIf="submitedAnswer && correctResponseExistsError" class="alert alert-danger" role="alert">
+                                    Vous avez déjà ajouter la bonne réponse !
+                                </div>
+                                <div class="mb-3">
+                                    <label for="wording" class="form-label">Libellé </label>
+                                    <input type="text" formControlName="wording" class="form-control" id="wording" autocomplete="false">
+
+                                </div>
+
+                                <div class="form-check">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        (Bonne réponse)
+                                    </label>
+                                    <input class="form-check-input" formControlName="correct" type="checkbox"
+                                        id="flexCheckDefault" autocomplete="false">
+
+                                </div>
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quitter</button>
+                                <button type="submit" class="btn btn-success"
+                                    >Sauvegarder</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <h4 class="text-center mt-3"><b>Réponses</b></h4>
+            <p class="text-center mt-3" style="font-size: 12px;">Veuillez ajouter au minimum 2 réponses</p>
+            <div *ngFor="let answer of answers.concat(newAnswers)" class="text-center response mt-3 mb-3"> <b>{{answer.wording}}</b>
+                &nbsp;
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="deleteModalLabel">Suppression</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Etes vous sûr de vouloir supprimer la réponse : <b> {{answer.wording}} </b>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                    (click)="deleteAnswer(answer)">Oui</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <i data-bs-toggle="modal" [ngClass]="{'fa-solid fa-check success-check': answer.correct}"
+                style="cursor: pointer;"></i>  &nbsp;
+
+                <i data-bs-toggle="modal" data-bs-target="#deleteModal" class="fa-solid fa-trash qg-icon-trash"
+                    style="cursor: pointer;"></i>
+            </div>
+
+            <div class="qg-save-button">
+                <button type="button" class="btn qg-primary-button qg-save-button mb-3" data-bs-toggle="modal"
+                    data-bs-target="#addAnswerModal">Ajouter</button>
+            </div>
+
+        </div>
+    </div>
+</div>

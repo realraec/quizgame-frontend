@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Answer } from '../models/answer.model';
 import { Question } from '../models/question.model';
 import { Quiz } from '../models/quiz.model';
 import { QuizService } from './quiz.service';
@@ -30,6 +31,10 @@ export class QuestionService {
     return this.http.get<Question>('http://localhost:8080/api/questions/'+id);
   }
 
+  public getAnswerByIdQuestion(id: number){
+
+    return this.http.get<Answer[]>('http://localhost:8080/api/answers/question/'+id);
+  }
  
 
   deleteQuestion(id: number){
