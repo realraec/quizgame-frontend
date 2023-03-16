@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Intern } from '../models/intern.model';
+import { Quiz } from '../models/quiz.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,14 @@ export class InternService {
   /**
    * This method add intern in database
    * @param intern This is the intern
+   * @param quiz
+
    * @returns
    */
   public addIntern(intern: Intern) {
     return this.http.post<Intern>('http://localhost:8080/api/interns/create', intern);
   }
+
 
   public updateIntern(intern: Intern , id: number){
     return this.http.put<Intern>('http://localhost:8080/api/interns/'+id, intern);
@@ -31,8 +35,8 @@ export class InternService {
    * @returns List of all interns
    */
 
-  getAllInterns(){
-    return this.http.get<Intern[]>('http://localhost:8080/api/interns');
+  getAllQuizzesforIntern(id: number){
+    return this.http.get<Quiz[]>('http://localhost:8080/api/quizzes/forIntern/'+id);
 
   }
 
