@@ -14,20 +14,34 @@ export class InternService {
    * This method add intern in database
    * @param intern This is the intern
    * @param quiz
+
    * @returns
    */
   public addIntern(intern: Intern) {
     return this.http.post<Intern>('http://localhost:8080/api/interns/create', intern);
   }
 
- /**   * This method return all interns   
-  * * @returns List of all interns   */
- getAllInterns(){
-  return this.http.get<Intern[]>('http://localhost:8080/api/interns');
-}
+
+  public updateIntern(intern: Intern , id: number){
+    return this.http.put<Intern>('http://localhost:8080/api/interns/'+id, intern);
+  }
+
+  public getOneIntern( id: number){
+    return this.http.get<Intern>('http://localhost:8080/api/interns/'+id);
+  }
+
+  /**
+   * This method return all interns
+   * @returns List of all interns
+   */
 
   getAllQuizzesforIntern(id: number){
     return this.http.get<Quiz[]>('http://localhost:8080/api/quizzes/forIntern/'+id);
 
   }
+
+  deleteIntern(id: number){
+    return this.http.delete('http://localhost:8080/api/interns/'+id)
+  }
+
 }

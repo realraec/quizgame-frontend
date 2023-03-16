@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from 'src/app/shared/models/quiz.model';
 import { InternService } from 'src/app/shared/services/intern.service';
 
+
 @Component({
   selector: 'app-list-questionnaires',
   templateUrl: './list-questionnaires.component.html',
@@ -35,4 +36,13 @@ export class ListQuestionnairesComponent implements OnInit{
 
   }
 
+  getAllQuizzes() {
+    this.quizService.getAllQuizzes().subscribe({
+      next: (data) => (this.quizzes = data),
+    });
+    console.log("**************salut**********");
+
+    console.log(this.quizzes);
+
+  }
 }
