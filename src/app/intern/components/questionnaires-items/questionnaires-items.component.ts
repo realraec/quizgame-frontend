@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Quiz } from 'src/app/shared/models/quiz.model';
 import { QuizService } from 'src/app/shared/services/quiz.service';
@@ -17,7 +17,7 @@ export class QuestionnairesItemsComponent implements OnInit{
   step: number = 1;
   totalQuestion!: number;
   // @Input() quiz: Quiz | undefined
-  constructor(private route: ActivatedRoute, private quizService: QuizService){}
+  constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService){}
 
   ngOnInit(){
     this.idQuiz = +this.route.snapshot.params['id']
@@ -51,5 +51,8 @@ export class QuestionnairesItemsComponent implements OnInit{
       console.log(this.step);
 
     }
+  }
+  onProgressQuestion(){
+    this.router.navigateByUrl("/questions/progress")
   }
 }

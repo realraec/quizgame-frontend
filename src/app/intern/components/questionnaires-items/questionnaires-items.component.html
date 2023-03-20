@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div *ngIf="step == 2" class="page" name="check" id="page2">
+    <!-- <div *ngIf="step == 2" class="page" name="check" id="page2">
       <h3>Titre</h3>
     </div>
     <div
@@ -25,17 +25,19 @@
       class="page"
       id="page3"
     >
-    </div>
+    </div> -->
 
-     <div class="d-flex justify-content-center btn-start mr-5">
+     <div  class="d-flex justify-content-center btn-start mr-5">
+
       <button
+        [routerLink]="['/intern/questions/progress', quiz?.id]"
         *ngIf="step === 1"
 
         class="btn btn-warning mx-1 my-2"
       >
         Demarrer
       </button>
-      <button
+      <!-- <button
         (click)="previous()"
         *ngIf="step > 1 && step < totalQuestion"
 
@@ -43,7 +45,7 @@
         class="btn btn-danger mx-1 my-2"
       >
         Suivant
-      </button>
+      </button> -->
      <!-- <button
         *ngIf="step != 3 || step < 3"
         type="submit"

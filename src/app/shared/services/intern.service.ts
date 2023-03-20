@@ -23,11 +23,16 @@ export class InternService {
  /**   * This method return all interns   
   * * @returns List of all interns   */
  getAllInterns(){
-  return this.http.get<Intern[]>('http://localhost:8080/api/interns');
+  return this.http.get<Intern[]>('http://localhost:8080/api/persons/interns');
+}
+
+getAllInternsById(id: number){
+  return this.http.get<Intern[]>('http://localhost:8080/api/persons/interns/'+id);
 }
 
   getAllQuizzesforIntern(id: number){
     return this.http.get<Quiz[]>('http://localhost:8080/api/quizzes/forIntern/'+id);
 
   }
+
 }

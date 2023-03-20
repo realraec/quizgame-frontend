@@ -1,0 +1,43 @@
+<app-navbar-intern></app-navbar-intern>
+  {{checkForm?.value | json}}
+<div class="container" *ngIf="checkForm">
+  <div class="intitule">
+    <h3 >{{lisQuestions?.wording}}</h3>
+  </div>
+  <div *ngIf="checkForm" class="container">
+<!-- Progress bar -->
+      <div *ngIf="data >= 0" class="circle d-flex justify-content-center align-items-center "><span>Le temps restant :{{data}}</span></div>
+<!-- End progress bar -->
+    <form [formGroup]="checkForm" (ngSubmit)="submit()">
+      <div class="checkbox">
+        <div *ngFor="let answer of lisQuestions?.answers" class="form-check d-block">
+          <label id="flexCheckDefault" class="mx-4 my-4">{{answer?.wording}}</label>
+          <input class="form-check form-check-input mx-4 my-4" formControlName ="check" type="checkbox" value="auto" id="flexCheckDefault">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="d-flex justify-content-center btn-start mr-5">
+
+    <button type="button"
+    (click)="onSaveForm(this.questionId!, this.idProgress!)"
+    *ngIf="lisQuestions?.numberOfQuestionsLeft != 1"
+
+      class="btn btn-warning mx-1 my-2"
+    >
+      Continuer
+    </button>
+      <button
+      type="button"
+      (click)="onSaveForm(this.questionId!, this.idProgress!)"
+      *ngIf="lisQuestions?.numberOfQuestionsLeft === 1"
+      type="submit"
+      class="btn btn-danger mx-1 my-2"
+    >
+      Terminer
+    </button>
+
+  </div>
+</div>
+

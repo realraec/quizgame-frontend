@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarInternComponent } from './components/navbar-intern/navbar-intern.component';
 import { QuestionnairesItemsComponent } from './components/questionnaires-items/questionnaires-items.component';
+import { QuestionProgressComponent } from './components/question-progress/question-progress.component';
+import { ResultatsComponent } from './components/resultats/resultats.component';
 
 
 
@@ -18,6 +20,8 @@ import { QuestionnairesItemsComponent } from './components/questionnaires-items/
     ListQuestionnairesComponent,
     NavbarInternComponent,
     QuestionnairesItemsComponent,
+    QuestionProgressComponent,
+    ResultatsComponent,
   ],
   imports: [
     CommonModule,
