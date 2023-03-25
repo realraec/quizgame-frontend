@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from 'src/app/shared/models/quiz.model';
 import { InternService } from 'src/app/shared/services/intern.service';
+import { QuizService } from 'src/app/shared/services/quiz.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class ListQuestionnairesComponent implements OnInit{
   idIntern!: number
   quizzes: Quiz[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private internService: InternService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private internService: InternService, private quizService: QuizService) {}
 
   ngOnInit(): void {
     this.onGetAllQuizzesforIntern(1)
