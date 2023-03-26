@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Intern } from '../models/intern.model';
 import { Question } from '../models/question.model';
 import { Quiz } from '../models/quiz.model';
 import { QuestionService } from './question.service';
@@ -59,6 +60,24 @@ export class QuizService {
 
   deleteQuiz(id: number){
     return this.http.delete('http://localhost:8080/api/quizzes/'+id)
+  }
+  
+  addInternToQuiz(idQuiz: number, internId: number){
+     return this.http.patch('http://localhost:8080/api/quizzes/'+idQuiz+ '/attributePersons/'+internId, {} );
+  }
+
+  removeInternToQuiz(idQuiz: number, internId: number){
+    return this.http.patch('http://localhost:8080/api/quizzes/'+idQuiz+ '/removePersons/'+internId, {} );
+ }
+
+  getAllInterAttributedToQuiz(idQuiz: number){
+
+    return this.http.get<Intern[]>('http://localhost:8080/api/persons/attributedToQuiz/'+idQuiz);
+  }
+  getAllInterNotAttributedToQuiz(idQuiz: number){
+
+    return this.http.get<Intern[]>('http://localhost:8080/api/persons/notAttributedToQuiz/'+idQuiz);
+
   }
 
 }

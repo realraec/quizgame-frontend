@@ -24,23 +24,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let intern of interns; let i=index">
-        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="deleteModalLabel">Suppression</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                Etes vous sûr de vouloir supprimer le stagiaire: <b>{{intern.lastname}} {{intern.firstname}}</b>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
-                <button type="button" class="btn btn-danger" (click)="deleteIntern(intern.id!)">Oui</button>
-              </div>
-            </div>
-          </div>
-        </div>
+    
 
         <th scope="row">{{i+1}}</th>
         <td>{{intern.lastname}}</td>
@@ -48,7 +32,7 @@
         <td>{{intern.email}}</td>
         <td>{{intern.company}}</td>
         <td><i class="fa fa-user-pen qg-icon-edit" style="cursor: pointer;" routerLink="/administrator/intern/update/{{intern.id}}"> &nbsp; </i>
-          <i  data-bs-toggle="modal" data-bs-target="#deleteModal" class="fa-solid fa-trash qg-icon-trash" style="cursor: pointer;"></i></td>
+          <i  (click)="deleteIntern(intern.id!)" class="fa-solid fa-trash qg-icon-trash" style="cursor: pointer;"></i></td>
       </tr>
 
     </tbody>

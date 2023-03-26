@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Count } from '../models/count.model';
 import { Intern } from '../models/intern.model';
 import { Quiz } from '../models/quiz.model';
 
@@ -45,6 +46,10 @@ export class InternService {
 
   deleteIntern(id: number){
     return this.http.delete('http://localhost:8080/api/persons/'+id)
+  }
+
+  countInterns(){
+    return this.http.get<Count>('http://localhost:8080/api/misc/counts');
   }
 
 }

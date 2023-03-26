@@ -140,10 +140,8 @@ export class UpdateQuestionComponent {
   }
 
   deleteAnswer(answer: Answer) {
-    console.log(answer);
-    console.log("answers"+this.answers.length);
-    console.log(this.answers.concat(this.newAnswers).length)
-    /*if (answer.id) {
+
+    if (answer.id) {
       let index = this.answers
         .findIndex((obj) => obj.wording === answer.wording);
       this.answers.splice(index, 1);
@@ -152,6 +150,6 @@ export class UpdateQuestionComponent {
       let index = this.newAnswers
         .findIndex((obj) => obj.wording === answer.wording);
       this.newAnswers.splice(index, 1);
-    }*/
+    }
   }
 }
