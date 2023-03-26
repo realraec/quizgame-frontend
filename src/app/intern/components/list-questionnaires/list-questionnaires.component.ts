@@ -16,24 +16,27 @@ export class ListQuestionnairesComponent implements OnInit{
 
   constructor(private route: ActivatedRoute, private router: Router, private internService: InternService) {
      this.idIntern = +this.route.snapshot.params['id']
-    console.log(this.idIntern);
+
   }
 
   ngOnInit(): void {
+    this.idIntern = +this.route.snapshot.params['id']
+    console.log(this.idIntern);
     // this.onGetAllInternsById(this.idIntern)
-    this.onGetAllQuizzesforIntern(4)
+    this.onGetAllQuizzesforIntern(5)
   }
 
   onGetAllQuizzesforIntern(id: number){
     // this.idIntern = +this.route.snapshot.params['id']
     // console.log(this.idIntern);
-    this.internService.getAllQuizzesforIntern(4).subscribe({
+    this.internService.getAllQuizzesforIntern(5).subscribe({
       next: (data: Quiz[]) =>{
     // this.quizzes = data.filter(q => q.id === this.idIntern)
         this.quizzes = data
+        console.log(this.quizzes)
       }
     });
-    console.log(this.quizzes)
+
   }
   onQuestion(){
     // this.router.navigateByUrl("questions")

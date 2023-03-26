@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { interval } from 'rxjs';
+import { Answer } from 'src/app/shared/models/answer.model';
 import { ProgressQuestion } from 'src/app/shared/models/progressQuestion';
 import { Quiz } from 'src/app/shared/models/quiz.model';
 import { Recording } from 'src/app/shared/models/recording.model';
@@ -11,87 +16,88 @@ import { InternService } from 'src/app/shared/services/intern.service';
 @Component({
   selector: 'app-question-progress',
   templateUrl: './question-progress.component.html',
-  styleUrls: ['./question-progress.component.scss']
+  styleUrls: ['./question-progress.component.scss'],
 })
-export class QuestionProgressComponent implements OnInit{
- reste = "toolsets";
- quizzes: Quiz[] = [];
- records!: Recording;
- data: number = 0;
-  lisQuestions!: ProgressQuestion;
-  idProgress?: number;
+export class QuestionProgressComponent implements OnInit {
+  idProgress!: number;
   questionId?: number;
+  answers: Answer[] = []
+  reste = 'toolsets';
+  quizzes: Quiz[] = [];
+  typeRecords: Recording = {};
+  data: number = 0;
+  lisQuestions!: ProgressQuestion;
   duree?: number;
+  pickedAnswersIds : number[] = [];
   checkForm?: FormGroup;
-  check: FormControl
-  constructor(private fb: FormBuilder, private questionService: AnswerService, private internService: InternService, private router: Router, private route:ActivatedRoute){
-    this.check = fb.control("true", [Validators.required])
+  // checked:boolean = false
+  check: FormControl;
+  submitted: boolean = false;
+  constructor(
+    private fb: FormBuilder,
+    private questionService: AnswerService,
+    private internService: InternService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.check = fb.control(false);
     this.checkForm = fb.group({
-      check:this.check
-    })
-    this.idProgress = +this.route.snapshot.params['id']
+    check: this.check
+    });
+    this.idProgress = +this.route.snapshot.params['id'];
     console.log(this.idProgress);
-    // this.questionId = this.lisQuestions?.id;
-    console.log(this.questionId);
 
   }
 
+  ngOnInit() {
+    const obs$ = interval(1000);
+    obs$.subscribe(d => {
+      this.data = (this.duree!-d);
+      if (this.data === 0) {
+        this.onSaveForm()
+        this.data === 0
+      }
+    });
 
-  ngOnInit(){
-
-    const obs$ = interval(1000)
-    obs$.subscribe((d) => {
-      this.data = ((this.duree!)-d)
-      if(this.data === 0){
-      // this.onSaveForm()
-      // this.data = 0
-    }
-
-    })
-
-    console.log(this.idProgress);
-    this.questionService.getQuestionInProgress(this.idProgress!).subscribe({
-      next: (data: ProgressQuestion) =>{
+    this.questionService.getQuestionInProgress(this.idProgress).subscribe({
+      next: (data: ProgressQuestion) => {
         this.lisQuestions = data;
-        console.log(this.lisQuestions);
-        this.duree = this.lisQuestions.maxDurationInSeconds
+        console.log(data);
+        this.duree = this.lisQuestions.maxDurationInSeconds;
         this.questionId = this.lisQuestions.id;
         console.log(this.questionId);
-
-      }
-
+      },
     });
   }
+  onSaveForm() {
+      // const formControls = this.items.map(item => new FormControl(false));
+      // this.myForm = this.fb.group({
+      //   checkboxes: this.fb.array(formControls)
+      // });
 
-  // onGetProgressQuestion(id: number){
-  //   this.idProgress = +this.route.snapshot.params['id']
-  //   console.log(this.idProgress);
-  //   this.questionService.getQuestionInProgress(2).subscribe({
-  //     next: (data: ProgressQuestion) =>{
-  //     // this.lisQuestions = data.filter(q => q.id === this.idProgress)
-  //       this.lisQuestions = data;
-  //       console.log(this.lisQuestions);
-  //       this.etat = this.lisQuestions.maxDurationInSeconds
-  //       console.log(this.etat);
 
-  //     }
-  //   });
+    const questionId = this.questionId!;
+    const progressId = this.idProgress!;
 
-  // }
-  onSaveForm(id1: number, id2: number){
-    this.questionService.saveRecord(this.records)
-    .subscribe({
-      next: ((data: Recording) =>{
-      this.records = data
-      console.log(this.records);
+    this.questionService.saveRecord(questionId, progressId, this.pickedAnswersIds).subscribe({
+      next: (data) => {
+        // if(data.check === true){
+        //  this.pickedAnswersIds.push(this.checkForm?.value)
+        // console.log(this.pickedAnswersIds);
+        // }
+        // this.pickedAnswersIds.push()
+        // console.log(this.pickedAnswersIds);
+        //  alert('success saving');
+      },
+    });
+    console.log(this.pickedAnswersIds);
 
-      alert("success saving");
-    })
-    // this.router.navigateByUrl
+
   }
-  )
-}
-  submit(){
+  onCheckboxChange(answer: any){
+    if(!this.pickedAnswersIds.includes(answer.id)){
+      this.pickedAnswersIds.push(answer.id)
+    }
 
   }
 

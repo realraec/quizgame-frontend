@@ -12,11 +12,11 @@ import { ResultatsComponent } from './components/resultats/resultats.component';
 const routes: Routes = [
   {path:  '', component: InternComponent},
  {path:  'liste/questionnaires', component: InternComponent},
- {path:  'candidature-spontanee', component: },
  {path:  'liste/questionnaires/:id', component: QuestionnairesItemsComponent},
-//  {path:  'questions/progress', component: QuestionProgressComponent},
+ {path:  'questions/progress', component: QuestionProgressComponent},
  {path:  'questions/progress/:id', component: QuestionProgressComponent},
- {path:  'questions/resultats', component: ResultatsComponent},
+ {path: 'listQuestions/questions/resultats/:id', component: ResultatsComponent},
+//  {path: 'listQuestions/questions/resultats/:id', component: ResultatsComponent},
  {path:  'navbar', component: NavbarInternComponent},
 //  {path:  'list-questionnaires', component: ListQuestionnairesComponent},
 ];

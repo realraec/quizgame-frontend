@@ -1,0 +1,6 @@
+<a
+  class="btn btn-primary text-white rounded-0 px-4 py-2"
+  [ngClass]="{'disabled': disabled !== undefined }"
+  [routerLink]="link">
+  {{ formattedBreadcrumb | uppercase }}
+</a>

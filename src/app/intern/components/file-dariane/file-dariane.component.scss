@@ -1,0 +1,7 @@
+a {
+  letter-spacing: 1px;
+
+  &.disabled {
+    opacity: 1 !important;
+  }
+}

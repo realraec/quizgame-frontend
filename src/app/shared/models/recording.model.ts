@@ -2,5 +2,7 @@ export interface Recording {
   id?: number;
   questionId?: number;
   progressId?: number;
-  success?: boolean;
+  pickedAnswersIds?: number[];
+  check?: boolean;
+  name?: string;
 }

@@ -10,6 +10,8 @@ import { NavbarInternComponent } from './components/navbar-intern/navbar-intern.
 import { QuestionnairesItemsComponent } from './components/questionnaires-items/questionnaires-items.component';
 import { QuestionProgressComponent } from './components/question-progress/question-progress.component';
 import { ResultatsComponent } from './components/resultats/resultats.component';
+import { FileDarianeComponent } from './components/file-dariane/file-dariane.component';
+
 
 
 
@@ -22,6 +24,7 @@ import { ResultatsComponent } from './components/resultats/resultats.component';
     QuestionnairesItemsComponent,
     QuestionProgressComponent,
     ResultatsComponent,
+    FileDarianeComponent,
   ],
   imports: [
     CommonModule,
