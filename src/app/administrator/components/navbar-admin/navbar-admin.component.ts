@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
 
 @Component({
   selector: 'app-navbar-admin',
@@ -7,9 +8,15 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./navbar-admin.component.scss'],
 })
 export class NavbarAdminComponent {
-  constructor(private router: Router) {}
+  constructor( private tokenStorageService: TokenStorageService, private router: Router) {}
 
   goAddInternPage() {
     this.router.navigate(['administrator/intern/list']);
+  }
+
+  signOut(){
+
+    this.tokenStorageService.signOut();
+    this.router.navigate(["/"])
   }
 }

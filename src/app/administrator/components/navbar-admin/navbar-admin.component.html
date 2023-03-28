@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-admin">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/administrator/dashboard">QUIZGAME</a>
+    <a class="navbar-brand" href="/administrator">QUIZGAME</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,6 +28,10 @@
             <li><a class="dropdown-item" href="/administrator/quiz/list">Liste des questionnaires</a></li>
           </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" aria-current="page"  (click)="signOut()" ><i class="fa-solid fa-right-from-bracket"></i></a>
+        </li>
+
       </ul>
     </div>
   </div>

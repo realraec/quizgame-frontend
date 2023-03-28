@@ -6,12 +6,14 @@ import { ProgressQuestion } from '../models/progressQuestion';
 import { Recording } from '../models/recording.model';
 import { Answer } from '../models/answer.model';
 import { Resultat } from '../models/resultat.model';
+import { AbstractService } from './abstract.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnswerService {
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private abstractService: AbstractService) { }
 
   getQuestionInProgress(id: number){
     return this.http.get<ProgressQuestion>('http://localhost:8080/api/questions/notInProgress/'+id);
@@ -49,21 +51,22 @@ export class AnswerService {
   public addAnswer(question: Answer) {
     return this.http.post<Answer>(
       'http://localhost:8080/api/answers/create',
-      question
+      question,
+      { headers: this.abstractService.getOption() }
     );
   }
 
   public updateAnswer(answer: Answer , id: number){
-    return this.http.put<Answer>('http://localhost:8080/api/answers/'+id, answer);
+    return this.http.put<Answer>('http://localhost:8080/api/answers/'+id, answer, { headers: this.abstractService.getOption() });
   }
 
   public getOneAnswer( id: number){
-    return this.http.get<Answer>('http://localhost:8080/api/answers/'+id);
+    return this.http.get<Answer>('http://localhost:8080/api/answers/'+id,  { headers: this.abstractService.getOption() });
   }
 
 
 
   deleteAnswer(id: number){
-    return this.http.delete('http://localhost:8080/api/answers/'+id)
-}
+    return this.http.delete('http://localhost:8080/api/answers/'+id,  { headers: this.abstractService.getOption() })
+  }
 }
