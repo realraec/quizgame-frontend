@@ -1,16 +1,39 @@
 <app-navbar-admin></app-navbar-admin>
 <div class="container mt-5">
-    <h2 class="text-center">Bienvenue Toto</h2>
+    <h2 class="text-center">Bienvenue {{admin.firstname}}</h2>
     <br />
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Suprression de compte</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Êtes-vous sûr de vouloir supprimer votre compte ? 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteAccount()">Oui</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <div class="row">
         <div class="col-lg-6 col-sm-12 col-md-6">
 
             <div class="mt-5">
-                <button routerLink="" class="btn qg-primary-button">Modifier mot de passe</button>
+                <button routerLink="/administrator/admin/update/{{id}}" class="btn qg-primary-button">Modifier mes informations</button>
+            </div>
+
+            <div class="mt-5">
+                <button routerLink="" class="btn qg-primary-button">Modifier mon mot de passe</button>
             </div>
             
             <div class="mt-5">
-                <button routerLink="" class="btn qg-danger-button">Supprimer mon compte</button>
+                <button class="btn qg-danger-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer mon compte</button>
             </div>
 
 

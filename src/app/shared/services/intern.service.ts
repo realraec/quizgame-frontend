@@ -21,17 +21,22 @@ export class InternService {
    * @returns
    */
   public addIntern(intern: Intern) {
-    return this.http.post<Intern>(this.abstractService.getUrl(this.personUrl+'create'), intern, { headers: this.abstractService.getOption(), observe: 'response' });
+    return this.http.post<Intern>(this.abstractService.getUrl('auth/register'), intern, { headers: this.abstractService.getOption(), observe: 'response' });
   }
 
 
   public updateIntern(intern: Intern , id: number){
-    return this.http.put<Intern>(this.abstractService.getUrl(this.personUrl+id), intern);
+    return this.http.put<Intern>(this.abstractService.getUrl(this.personUrl+id), intern,  { headers: this.abstractService.getOption() });
   }
 
   public getOneIntern( id: number){
-    return this.http.get<Intern>(this.abstractService.getUrl(this.personUrl+id));
+    return this.http.get<Intern>(this.abstractService.getUrl(this.personUrl+id),  { headers: this.abstractService.getOption() });
   }
+
+  public getOneInternByUsername( username: string){
+    return this.http.get<Intern>(this.abstractService.getUrl(this.personUrl+'username/'+username),  { headers: this.abstractService.getOption() });
+  }
+
 
   /**
    * This method return all interns
