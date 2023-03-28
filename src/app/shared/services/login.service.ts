@@ -4,12 +4,15 @@ import { Observable } from 'rxjs';
 import { Intern } from '../models/intern.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  constructor(private http: HttpClient) {}
+  public login(username: string, password: string): Observable<any> {
 
-  constructor(private http: HttpClient) { }
-  public loginUserFromRemote(user: Intern):Observable<Intern>{
-    return this.http.post<Intern>("http://localhost:8080/api/login",user);
+    return this.http.post('http://localhost:8080/api/auth/authenticate', {
+      username,
+      password,
+    });
   }
 }

@@ -2,15 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Answer } from '../models/answer.model';
 import { Question } from '../models/question.model';
-import { Quiz } from '../models/quiz.model';
-import { QuizService } from './quiz.service';
+import { AbstractService } from './abstract.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private abstractService: AbstractService) { }
 
    /**
    * This method add question in database
@@ -19,25 +19,25 @@ export class QuestionService {
    public addQuestion(question: Question) {
     return this.http.post<Question>(
       'http://localhost:8080/api/questions/create',
-      question
+      question,{ headers: this.abstractService.getOption() } 
     );
   }
 
   public updateQuestion(question: Question , id: number){
-    return this.http.put<Question>('http://localhost:8080/api/questions/'+id, question);
+    return this.http.put<Question>('http://localhost:8080/api/questions/'+id, question, { headers: this.abstractService.getOption() } );
   }
 
   public getOneQuestion( id: number){
-    return this.http.get<Question>('http://localhost:8080/api/questions/'+id);
+    return this.http.get<Question>('http://localhost:8080/api/questions/'+id, { headers: this.abstractService.getOption() } );
   }
 
   public getAnswerByIdQuestion(id: number){
 
-    return this.http.get<Answer[]>('http://localhost:8080/api/answers/question/'+id);
+    return this.http.get<Answer[]>('http://localhost:8080/api/answers/question/'+id, { headers: this.abstractService.getOption() } );
   }
  
 
   deleteQuestion(id: number){
-    return this.http.delete('http://localhost:8080/api/questions/'+id)
+    return this.http.delete('http://localhost:8080/api/questions/'+id, { headers: this.abstractService.getOption() } )
   }
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Intern } from '../../shared/models/intern.model';
 import { Router } from '@angular/router';
 import { LoginService } from '../../shared/services/login.service';
+import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -10,43 +11,40 @@ import { LoginService } from '../../shared/services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
-  msg: string | undefined
-  // user: Intern
-  user: Intern = {
-    username:"",
-    password:""
-  }
-  signinForm: FormGroup;
-  username: FormControl
-  password: FormControl
-  constructor(private route: Router, private loginService: LoginService, private fb: FormBuilder){
-    this.username = fb.control("",[Validators.required])
-    this.password = fb.control("",[Validators.required])
 
-    this.signinForm = fb.group({
-      username: this.username,
-      password: this.password
-    })
-  }
+  loginForm!: FormGroup;
+  loginFailed: boolean = false;
+
   ngOnInit(): void {
+    this.initForm();
+  }
+
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, 
+    private tokenStorageService: TokenStorageService, 
+    private router: Router){
+
+  }
+  initForm(){
+
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+     
+    });
   }
 
 
-  handleSubmit(){
-    console.log(this.signinForm.value);
+  login(){
 
-  }
-  loginUser(){
-    this.loginService.loginUserFromRemote(this.user).subscribe(
-      data=>{
-        this.route.navigate(['/intern'])
-      },
-      eroor =>{
-        console.log("exception received");
-        this.msg = "Bad credentials please enter valid username and password"
+   
+    this.loginService.login(this.loginForm.value['username'],this.loginForm.value['password'] ).subscribe({
 
-      }
-    )
+      next:(data) => this.tokenStorageService.saveToken(data.token),
+      complete:() => this.router.navigate(["/administrator"]),
+      error: ()=> this.loginFailed = true
+    })
+    
+
   }
 
 }
