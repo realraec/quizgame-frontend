@@ -58,12 +58,12 @@ export class AnswerService {
   }
 
   public getOneAnswer( id: number){
-    return this.http.get<Answer>('http://localhost:8080/api/answers/'+id, { headers: this.abstractService.getOption() });
+    return this.http.get<Answer>('http://localhost:8080/api/answers/'+id,  { headers: this.abstractService.getOption() });
   }
 
 
 
   deleteAnswer(id: number){
-    return this.http.delete('http://localhost:8080/api/answers/'+id, { headers: this.abstractService.getOption() })
-}
+    return this.http.delete('http://localhost:8080/api/answers/'+id,  { headers: this.abstractService.getOption() })
+  }
 }
