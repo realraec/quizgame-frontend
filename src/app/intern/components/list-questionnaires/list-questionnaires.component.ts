@@ -23,13 +23,13 @@ export class ListQuestionnairesComponent implements OnInit{
     this.idIntern = +this.route.snapshot.params['id']
     console.log(this.idIntern);
     // this.onGetAllInternsById(this.idIntern)
-    this.onGetAllQuizzesforIntern(5)
+    this.onGetAllQuizzesforIntern(4)
   }
 
   onGetAllQuizzesforIntern(id: number){
     // this.idIntern = +this.route.snapshot.params['id']
     // console.log(this.idIntern);
-    this.internService.getAllQuizzesforIntern(5).subscribe({
+    this.internService.getAllQuizzesforIntern(4).subscribe({
       next: (data: Quiz[]) =>{
     // this.quizzes = data.filter(q => q.id === this.idIntern)
         this.quizzes = data

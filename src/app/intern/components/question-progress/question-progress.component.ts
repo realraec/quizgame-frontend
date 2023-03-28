@@ -53,11 +53,12 @@ export class QuestionProgressComponent implements OnInit {
     const obs$ = interval(1000);
     obs$.subscribe(d => {
       this.data = (this.duree!-d);
-      if (this.data === 0) {
-        this.onSaveForm()
-        this.data === 0
-      }
+
     });
+    if (this.data === 0) {
+      this.onSaveForm()
+
+    }
 
     this.questionService.getQuestionInProgress(this.idProgress).subscribe({
       next: (data: ProgressQuestion) => {
@@ -69,37 +70,28 @@ export class QuestionProgressComponent implements OnInit {
       },
     });
   }
-  onSaveForm() {
-      // const formControls = this.items.map(item => new FormControl(false));
-      // this.myForm = this.fb.group({
-      //   checkboxes: this.fb.array(formControls)
-      // });
-
-
-    const questionId = this.questionId!;
-    const progressId = this.idProgress!;
-
-    this.questionService.saveRecord(questionId, progressId, this.pickedAnswersIds).subscribe({
-      next: (data) => {
-        // if(data.check === true){
-        //  this.pickedAnswersIds.push(this.checkForm?.value)
-        // console.log(this.pickedAnswersIds);
-        // }
-        // this.pickedAnswersIds.push()
-        // console.log(this.pickedAnswersIds);
-        //  alert('success saving');
-      },
-    });
-    console.log(this.pickedAnswersIds);
-
-
-  }
   onCheckboxChange(answer: any){
     if(!this.pickedAnswersIds.includes(answer.id)){
       this.pickedAnswersIds.push(answer.id)
     }
 
   }
+
+  onSaveForm() {
+    const questionId = this.questionId!;
+    const progressId = this.idProgress!;
+
+    this.questionService.saveRecord(questionId, progressId, this.pickedAnswersIds).subscribe({
+      next: (data) => {
+        console.log(this.pickedAnswersIds);
+          // window.location.reload()
+      },
+
+    });
+  }
+
+
+
 
 
 }

@@ -1,5 +1,10 @@
 <app-navbar-intern></app-navbar-intern>
-
+<br>
+<br>
+<br>
+<div class="file-dariane fw-bold">
+  <p>Espace stagiaire > {{quiz?.title}} > instructions</p>
+</div>
 <!-- <app-file-dariane link="liste/questionnaires",id names="Liste Questionnaires"></app-file-dariane> -->
 <hr>
 <div class="container">
@@ -21,7 +26,7 @@
       </div>
     </div>
 
-     <div  class="d-flex justify-content-center btn-start mr-5">
+     <div  class="d-flex justify-content-center btn-start mr-5 text-end">
 
       <button
         [routerLink]="['/intern/questions/progress', quiz?.id]"
@@ -29,7 +34,7 @@
 
         class="btn btn-warning mx-1 my-2"
       >
-        Demarrer
+        Démarrer
       </button>
       <!-- <button
         [routerLink]="['/intern/questions/progress', quiz?.id]"

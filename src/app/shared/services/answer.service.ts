@@ -16,9 +16,7 @@ export class AnswerService {
     return this.http.get<ProgressQuestion>('http://localhost:8080/api/questions/notInProgress/'+id);
 
   }
-  // saveRecord(records: Recording){
-  //   return this.http.post<Recording>('http://localhost:8080/api/records/create',records);
-  // }
+
   saveRecord(questionId: number, progressId: number, pickedAnswersIds: number[]): Observable<any> {
     const url = 'http://localhost:8080/api/records/createAndCheck';
     const httpOptions = {

@@ -1,4 +1,11 @@
 <app-navbar-intern></app-navbar-intern>
+<br />
+<br />
+<br />
+<div class="file-dariane fw-bold">
+  <!-- <p>Espace stagiaire > > instructions</p> -->
+</div>
+<hr />
 <div class="container" *ngIf="checkForm">
   <div class="intitule">
     <h3>{{ lisQuestions?.wording }}</h3>
@@ -14,11 +21,13 @@
     <!-- End progress bar -->
     <form [formGroup]="checkForm">
       <div class="checkbox">
-        <div class="form-group"
-          *ngFor="let answer of lisQuestions?.answers"
+        <div
+          class="form-group"
+          *ngFor="let answer of lisQuestions?.answers; let i = index"
+          [attr.data-index]="i"
           class="form-check d-block"
         >
-          <label class="mx-4 my-4">{{answer?.wording}}</label>
+          <label class="mx-4 my-4">{{ answer?.wording }}</label>
           <input
             formControlName="check"
             (change)="onCheckboxChange(answer)"
@@ -31,10 +40,10 @@
 
   <div class="d-flex justify-content-center btn-start mr-5">
     <button
-    *ngIf="lisQuestions && lisQuestions?.numberOfQuestionsLeft != 1"
+      *ngIf="lisQuestions && lisQuestions?.numberOfQuestionsLeft != 1"
       type="button"
       (click)="onSaveForm()"
-      [routerLink]="['/intern/questions/progress', lisQuestions.id]"
+      [routerLink]="['/intern/questions/progress', idProgress]"
       class="btn btn-warning mx-1 my-2"
     >
       Continuer
@@ -43,7 +52,7 @@
       type="button"
       *ngIf="lisQuestions?.numberOfQuestionsLeft === 1"
       (click)="onSaveForm()"
-      [routerLink]="['/intern/listQuestions/questions/resultats/',idProgress]"
+      [routerLink]="['/intern/listQuestions/questions/resultats/', idProgress]"
       type="submit"
       class="btn btn-danger mx-1 my-2"
     >
