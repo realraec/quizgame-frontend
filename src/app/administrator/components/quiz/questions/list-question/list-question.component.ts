@@ -36,7 +36,7 @@ export class ListQuestionComponent {
   initForm(){
     this.addInternForm = this.formBuilder.group({
       intern: ['', Validators.required],
-     
+
     });
   }
 
@@ -45,7 +45,7 @@ export class ListQuestionComponent {
 
 
   getAllNotAttributedInterns(){
-    
+
     this.quizService.getAllInterNotAttributedToQuiz(this.id).subscribe({
 
       next: (data) => this.interns = data
@@ -54,7 +54,7 @@ export class ListQuestionComponent {
   }
 
   getAllAttributedInterns(){
-    
+
     this.quizService.getAllInterAttributedToQuiz(this.id).subscribe({
 
       next: (data) => this.participants = data
@@ -68,13 +68,13 @@ export class ListQuestionComponent {
       {
         next: (data) => this.quiz = data,
         complete: () => this.initQuestions()
-        
+
       }
     )
   }
 
   initQuestions() {
-    this.quiz.questionsIds.forEach((value)=> this.questionService.getOneQuestion(
+    this.quiz.questionsIds.forEach((value: any)=> this.questionService.getOneQuestion(
       value
     ).subscribe({next: (data)=>this.questions.push(data)}) );
 
@@ -94,9 +94,9 @@ export class ListQuestionComponent {
   }
   deleteIntern(idIntern: number){
 
-    
 
-    
+
+
     this.quizService.removeInternToQuiz(this.id, idIntern).subscribe({
       complete: ()=> window.location.reload()
     })
@@ -108,7 +108,7 @@ export class ListQuestionComponent {
     this.internSelect = this.addInternForm.value['intern'];
 
     console.log(this.internSelect);
-    
+
     this.quizService.addInternToQuiz(this.id, this.internSelect).subscribe({
       complete: ()=> window.location.reload()
     })

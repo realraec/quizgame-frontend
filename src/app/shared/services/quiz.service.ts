@@ -21,7 +21,7 @@ export class QuizService {
     return this.http.post<Quiz>(
       'http://localhost:8080/api/quizzes/create',
       quiz,
-      { headers: this.abstractService.getOption() } 
+      { headers: this.abstractService.getOption() }
     );
   }
 
@@ -49,21 +49,21 @@ export class QuizService {
     let questions: Question[] = [];
     this.getOneQuiz(id).subscribe({
       next: (data) => quiz = data,
-     
+
     });
 
-    quiz.questionsIds.forEach((value)=> this.questionService.getOneQuestion(
+    quiz.questionsIds.forEach((value: any)=> this.questionService.getOneQuestion(
       value
     ).subscribe({next: (data)=>questions.push(data)}) );
-  
-      
+
+
     return questions;
   }
 
   deleteQuiz(id: number){
     return this.http.delete('http://localhost:8080/api/quizzes/'+id,  { headers: this.abstractService.getOption() } )
   }
-  
+
   addInternToQuiz(idQuiz: number, internId: number){
      return this.http.patch('http://localhost:8080/api/quizzes/'+idQuiz+ '/attributePersons/'+internId, {},  { headers: this.abstractService.getOption() } );
   }
