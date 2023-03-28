@@ -1,0 +1,74 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container mt-5">
+    <h2>Mise à jour des informations</h2>
+    <br />
+    <div *ngIf="isSubmit && isSuccess" class="alert alert-success" role="alert">
+        Mise à jour effectuée avec succès <a href="/administrator/intern/list">Liste des stagiaires</a>
+    </div>
+
+    <div *ngIf="isSubmit && isFailed" class="alert alert-danger" role="alert">
+        Une erreur est survenue
+    </div>
+    <form >
+
+        <table class="table" aria-label="Modification d'un stagiaire">
+
+            <tr>
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Nom</label>
+                        <input type="text" [(ngModel)]="intern.lastname" 
+                         name="lastname"
+                         class="form-control" id="lastName">
+                    </div>
+                </td>
+
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Prénom</label>
+                        <input type="text" [(ngModel)]="intern.firstname"  name="firstname"  class="form-control" id="firstName">
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Email</label>
+                        <input type="email" [(ngModel)]="intern.email"  name="email" class="form-control" id="email">
+                    </div>
+                </td>
+
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Société</label>
+                        <input type="text"  [(ngModel)]="intern.company"  name="company"   class="form-control" id="company">
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Nom d'utilisateur</label>
+                        <input type="text"  [(ngModel)]="intern.username"  name="username"  class="form-control" id="username">
+                    </div>
+                </td>
+
+                <td>
+                    <div class="mb-3">
+                        <label for="nom" class="form-label">Mot de passe</label>
+                        <input type="password"  [(ngModel)]="intern.password"  name="password"  class="form-control" id="password">
+                    </div>
+                </td>
+
+            </tr>
+
+        </table>
+        <div class="qg-save-button">
+            <button  class="btn qg-primary-button qg-save-button" (click)="updateIntern()">Mettre à jour</button>
+        </div>
+    </form>
+</div>

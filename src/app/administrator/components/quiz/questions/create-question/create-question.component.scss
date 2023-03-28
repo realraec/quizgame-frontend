@@ -1,0 +1,18 @@
+.answers-section {
+   border: solid 1px black;
+}
+
+ @media (min-width: 900px) {
+     .answers-section {
+         padding-left: 90px;
+     }
+
+ }
+
+.response{
+    font-size: 15px;
+}
+
+.success-check{
+    color: green;
+}

@@ -43,7 +43,7 @@ export class CreateInternComponent implements OnInit {
     this.intern.company = formValue['company'];
     this.intern.username = formValue['username'];
     this.intern.password = formValue['password'];
-
+    this.intern.role = 'INTERN';
     this.internService.addIntern(this.intern).subscribe({
       complete: () => (this.isSuccess = true),
       error: (error) =>{

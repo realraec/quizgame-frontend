@@ -8,6 +8,9 @@
   <h2 class="text-center">Liste des stagiaires</h2>
   <br />
 
+
+
+
   <table class="table" aria-label="liste des stagiaires">
     <thead>
       <tr>
@@ -21,12 +24,15 @@
     </thead>
     <tbody>
       <tr *ngFor="let intern of interns; let i=index">
+    
+
         <th scope="row">{{i+1}}</th>
         <td>{{intern.lastname}}</td>
         <td>{{intern.firstname}}</td>
         <td>{{intern.email}}</td>
         <td>{{intern.company}}</td>
-        <td><i class="fa fa-user-pen qg-icon-edit"> &nbsp; </i><i class="fa-solid fa-trash qg-icon-trash"></i></td>
+        <td><i class="fa fa-user-pen qg-icon-edit" style="cursor: pointer;" routerLink="/administrator/intern/update/{{intern.id}}"> &nbsp; </i>
+          <i  (click)="deleteIntern(intern.id!)" class="fa-solid fa-trash qg-icon-trash" style="cursor: pointer;"></i></td>
       </tr>
 
     </tbody>

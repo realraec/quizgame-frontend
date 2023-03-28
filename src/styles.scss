@@ -14,12 +14,17 @@ body {
 .qg-primary-button {
     background-color: #455bd0 !important;
     color: white !important;
+    text-align: center;
 }
-
-.qg-save-button {
+.qg-danger-button {
+    background-color: #C61E1E !important;
+    color: white !important;
     text-align: center;
 }
 
+.qg-icon-add {
+    color: #347A33
+}
 .qg-icon-edit {
     color: #455bd0;
 }

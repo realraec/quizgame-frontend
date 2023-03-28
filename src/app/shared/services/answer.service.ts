@@ -1,3 +1,4 @@
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -6,11 +7,13 @@ import { ProgressQuestion } from '../models/progressQuestion';
 import { Recording } from '../models/recording.model';
 import { Resultat } from '../models/resultat.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AnswerService {
   constructor(private http: HttpClient) { }
+
 
   getQuestionInProgress(id: number){
     return this.http.get<ProgressQuestion>('http://localhost:8080/api/questions/notInProgress/'+id);
@@ -39,5 +42,6 @@ export class AnswerService {
   // resultat des candidats
   getResultat(id: number){
     return this.http.get<Resultat>('http://localhost:8080/api/progresses/'+id)
+
   }
 }

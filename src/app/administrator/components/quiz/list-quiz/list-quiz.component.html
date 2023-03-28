@@ -19,11 +19,15 @@
     </thead>
     <tbody>
       <tr *ngFor="let quiz of quizzes; let i=index">
+      
         <th scope="row">{{i+1}}</th>
         <td>{{quiz.title}}</td>
         <td>{{quiz.summary}}</td>
      
-        <td><i class="fa fa-user-pen qg-icon-edit"> &nbsp; </i><i class="fa-solid fa-trash qg-icon-trash"></i></td>
+        <td><i class=" fa fa-eye qg-icon-add" style="cursor: pointer;" routerLink="/administrator/quiz/{{quiz.id}}/question/list"> &nbsp; 
+        </i><i class="fa fa-user-pen qg-icon-edit" style="cursor: pointer;" routerLink="/administrator/quiz/update/{{quiz.id}}"> &nbsp; 
+        </i>
+        <i class="fa-solid fa-trash qg-icon-trash" (click)="deleteQuiz(quiz.id!)"  class="fa-solid fa-trash qg-icon-trash" style="cursor: pointer;"></i></td>
       </tr>
 
     </tbody>

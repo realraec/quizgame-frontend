@@ -4,4 +4,5 @@ export interface Quiz {
   summary?: string;
   state?: string;
   questionsIds: string[];
+
 }

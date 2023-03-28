@@ -1,5 +1,6 @@
 export interface Answer{
 
+
   id?: number;
 
   wording?: string;
@@ -9,3 +10,4 @@ export interface Answer{
   questionId?:number;
 
   }
+

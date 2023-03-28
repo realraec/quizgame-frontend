@@ -22,4 +22,13 @@ export class ListQuizComponent implements OnInit {
       next: (data) => (this.quizzes = data),
     });
   }
+  deleteQuiz(id: number){
+    this.quizService.deleteQuiz(id).subscribe(
+      {
+        complete: ()=> window.location.reload()
+      }
+    );
+  }
+
+
 }

@@ -1,1 +1,59 @@
 <app-navbar-admin></app-navbar-admin>
+<div class="container mt-5">
+    <h2 class="text-center">Bienvenue Toto</h2>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 col-md-6">
+
+            <div class="mt-5">
+                <button routerLink="" class="btn qg-primary-button">Modifier mot de passe</button>
+            </div>
+            
+            <div class="mt-5">
+                <button routerLink="" class="btn qg-danger-button">Supprimer mon compte</button>
+            </div>
+
+
+        </div>
+
+        <div class="col-lg-3 col-sm-12 col-md-6 ">
+
+            <div class="mt-5 stat">
+                <p class="stat-title">Nombre de stagiaires</p>
+                <p class="stat-content"><i class="fa-solid fa-graduation-cap"></i> &nbsp;{{count.internCount}}</p>
+            </div>
+            
+            
+
+        
+
+            <div class="mt-5 stat">
+                <p class="stat-title">Nombre de questionnaires</p>
+                <p class="stat-content"><i class="fa-solid fa-list"></i> &nbsp;{{count.quizCount}}</p>
+            </div>
+            
+            
+        </div>
+
+        <div class="col-lg-3 col-sm-12 col-md-6 ">
+
+            <div class="icon-add" style="cursor: pointer;">
+                <p class="stat-content" routerLink="/administrator/intern/create"><i class="fa-solid fa-user-plus"></i></p>
+            </div>
+            
+            
+
+        
+
+            <div class="icon-add2" style="cursor: pointer;">
+                <p class="stat-content" routerLink="/administrator/quiz/create"><i class="fa-solid fa-add"></i></p>
+            </div>
+            
+            
+        </div>
+
+        
+    </div>
+
+    
+</div>
