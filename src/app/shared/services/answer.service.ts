@@ -21,17 +21,13 @@ export class AnswerService {
 
   saveRecord(questionId: number, progressId: number, pickedAnswersIds: number[]): Observable<any> {
     const url = 'http://localhost:8080/api/records/createAndCheck';
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
+
     const data = {
       questionId: questionId,
       progressId: progressId,
       pickedAnswersIds:[]
     };
-    return this.http.post(url, data, httpOptions,);
+    return this.http.post(url, data, { headers: this.abstractService.getOption() },);
   }
 
 
