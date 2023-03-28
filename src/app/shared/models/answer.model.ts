@@ -1,11 +1,6 @@
 export interface Answer{
-
-  id?: number;
-
-  wording?: string;
-
-  correct?: boolean;
-
-  questionId?:number;
-
-  }
+    id?: number;
+    wording?: string;
+    correct?: boolean;
+    questionId?:number;
+}

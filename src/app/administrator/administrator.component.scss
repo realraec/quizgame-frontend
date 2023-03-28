@@ -1,0 +1,37 @@
+.stat{
+
+    padding-left: 50px !important;
+    border: 1px solid black;
+}
+
+.icon-add{
+    margin-top: 80px;
+}
+
+.icon-add2{
+    margin-top: 100px;
+}
+
+.stat-title{
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.stat-content{
+
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 52px;
+}
+
+@media (max-width: 1024px) {
+    
+    .icon-add{
+        display: none;
+    }
+
+    .icon-add2{
+        display: none;
+    }
+}

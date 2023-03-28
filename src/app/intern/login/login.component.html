@@ -1,25 +1,26 @@
-
 <div class="container sign w-50 h-75 mb-auto mt-5">
-  <form (ngSubmit)="loginUser()" [formGroup]="signinForm">
-    <small class="text-danger">{{msg}}</small>
+
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
     <div class="image d-flex justify-content-center">
       <img src="assets/images/logoProjet.png" class="w-50" alt="...">
     </div>
 
-    <div class="container mx-7 form-inline firstname  w-100">
+    <p *ngIf="loginFailed" style="color: red;"> Votre nom utilisateur ou mot de passe est incorrect</p>
 
-      <label for="inputText" class="col-sm-2 col-form-label">Username</label>
-      <div class="col-sm-10 d-flex justify-content-center text-align-center">
-        <input type="text" [formControl]="username" class="form-control" id="inputText">
+    <div class="container">
+
+      <div class="mb-3">
+        <label for="username" class="form-label">Nom d'utilisateur</label>
+        <input type="text" formControlName="username" class="form-control" id="username">
       </div>
 
-
-      <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-      <div class="col-sm-10">
-        <input type="password" [formControl]="password" class="form-control d-flex justify-content-center" id="inputPassword">
+      <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe</label>
+        <input type="text" formControlName="password" class="form-control" id="password">
       </div>
-      <div class="button d-flex justify-content-center mt-4 mr-auto">
-        <button [routerLink]="['intern']" type="button" class="btn btn-primary btn-lg ">Se connecter</button>
+
+      <div style="text-align: center;">
+        <button class="mt-5 " type="submit" class="btn btn-primary btn-lg ">Se connecter</button>
       </div>
     </div>
   </form>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Progresses } from '../models/progressesSuper.model';
 import { ProgressQuestion } from '../models/progressQuestion';
 import { Recording } from '../models/recording.model';
+import { Answer } from '../models/answer.model';
 import { Resultat } from '../models/resultat.model';
 
 @Injectable({
@@ -40,4 +41,29 @@ export class AnswerService {
   getResultat(id: number){
     return this.http.get<Resultat>('http://localhost:8080/api/progresses/'+id)
   }
+
+  /**
+   * This method add answer in database
+   * @param answer This is the answer
+   */
+  public addAnswer(question: Answer) {
+    return this.http.post<Answer>(
+      'http://localhost:8080/api/answers/create',
+      question
+    );
+  }
+
+  public updateAnswer(answer: Answer , id: number){
+    return this.http.put<Answer>('http://localhost:8080/api/answers/'+id, answer);
+  }
+
+  public getOneAnswer( id: number){
+    return this.http.get<Answer>('http://localhost:8080/api/answers/'+id);
+  }
+
+
+
+  deleteAnswer(id: number){
+    return this.http.delete('http://localhost:8080/api/answers/'+id)
+}
 }

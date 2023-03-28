@@ -1,0 +1,85 @@
+<app-navbar-admin></app-navbar-admin>
+
+<div class="container mt-5">
+
+  <button type="button" class="btn qg-primary-button" routerLink="/administrator/quiz/{{quiz.id}}/question/create"><i class="fa fa-add "></i> &nbsp; Ajouter une question</button>
+  <br />
+
+  <h2 class="text-center">{{this.quiz.title}}</h2>
+  <h5 class="">Liste des questions</h5>
+
+  <br />
+
+  <table class="table" aria-label="liste des stagiaires">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Libellé</th>
+        <th scope="col">Durée</th>
+     
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let question of questions; let i=index">
+       
+        <th scope="row">{{i+1}}</th>
+        <td>{{question.wording}}</td>
+        <td>{{question.maxDurationInSeconds}}</td>
+     
+        <td><i class="fa fa-user-pen qg-icon-edit" style="cursor: pointer;" routerLink="/administrator/quiz/{{quiz.id}}/question/update/{{question.id}}"> &nbsp; 
+        </i>
+        <i class="fa-solid fa-trash qg-icon-trash" (click)="deleteQuestion(question.id!)" class="fa-solid fa-trash qg-icon-trash" style="cursor: pointer;"></i></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <br/> <br/> <br/>
+  <h5 class="">Liste des abonnés</h5>
+  <br/>
+  <form (ngSubmit)="addIntern()" [formGroup]="addInternForm">
+
+  <div class="row">
+
+    <div class="col-lg-9">
+      <select class="form-select" aria-label="add participant" formControlName="intern">
+        <option *ngFor="let intern of interns " [value]="intern.id" >{{intern.lastname}} {{intern.firstname}} </option>
+      
+      </select>
+
+    </div>
+    <div class="col-lg-3">
+      <button type="submit" class="btn qg-primary-button" ><i class="fa fa-add "></i> &nbsp; Ajouter</button>
+      <br />
+    </div>
+  </div>
+</form>
+
+ 
+
+  <br/>
+
+
+  <table class="table" aria-label="liste des stagiaires">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+     
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let participant of participants; let i=index">
+     
+        <th scope="row">{{i+1}}</th>
+        <td>{{participant.lastname}}</td>
+        <td>{{participant.firstname}}</td>
+     
+        <td>
+        <i class="fa-solid fa-trash qg-icon-trash" (click)="deleteIntern(participant.id!)" class="fa-solid fa-trash qg-icon-trash" style="cursor: pointer;"></i></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
