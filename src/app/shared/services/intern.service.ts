@@ -51,7 +51,7 @@ getAllInternsById(id: number){
 }
 
   getAllQuizzesforIntern(id: number){
-    return this.http.get<Quiz[]>('http://localhost:8080/api/quizzes/forPerson/'+id,  { headers: this.abstractService.getOption() } );
+    return this.http.get<Quiz[]>('http://localhost:8080/api/quizzes/forPerson/'+id, { headers: this.abstractService.getOption() } );
 
   }
 

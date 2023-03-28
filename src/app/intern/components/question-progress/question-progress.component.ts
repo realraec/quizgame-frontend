@@ -8,8 +8,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { Answer } from 'src/app/shared/models/answer.model';
 import { ProgressQuestion } from 'src/app/shared/models/progressQuestion';
+// import { ProgressQuestion } from 'src/app/shared/models/progressQuestion';
 import { Quiz } from 'src/app/shared/models/quiz.model';
 import { Recording } from 'src/app/shared/models/recording.model';
+// import { Recording } from 'src/app/shared/models/recording.model';
 import { AnswerService } from 'src/app/shared/services/answer.service';
 import { InternService } from 'src/app/shared/services/intern.service';
 

@@ -5,6 +5,7 @@ import { Intern } from 'src/app/shared/models/intern.model';
 import { Quiz } from 'src/app/shared/models/quiz.model';
 import { InternService } from 'src/app/shared/services/intern.service';
 import { QuizService } from 'src/app/shared/services/quiz.service';
+import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
 
 
 @Component({
@@ -19,9 +20,9 @@ export class ListQuestionnairesComponent implements OnInit{
   idIntern!: number
   quizzes: Quiz[] = [];
   interns: Intern[] = [];
-  tokenStorageService: any;
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private internService: InternService) {
+
+  constructor(private route: ActivatedRoute, private service: TokenStorageService, private quizService: QuizService, private router: Router, private internService: InternService) {
      this.idIntern = +this.route.snapshot.params['id']
 
   }
@@ -30,12 +31,14 @@ export class ListQuestionnairesComponent implements OnInit{
     this.idIntern = +this.route.snapshot.params['id']
     console.log(this.idIntern);
     // this.onGetAllInternsById(this.idIntern)
-    this.onGetAllQuizzesforIntern(this.id)
+    this.getIntern()
+    this.onGetAllQuizzesforIntern()
   }
 
-  onGetAllQuizzesforIntern(id: number){
+  onGetAllQuizzesforIntern(){
     // this.idIntern = +this.route.snapshot.params['id']
     // console.log(this.idIntern);
+    console.log(this.id);
     this.internService.getAllQuizzesforIntern(this.id).subscribe({
       next: (data: Quiz[]) =>{
     // this.quizzes = data.filter(q => q.id === this.idIntern)
@@ -60,7 +63,9 @@ export class ListQuestionnairesComponent implements OnInit{
 
   }
   getIntern() {
-    this.intern = this.tokenStorageService.getUser();
+    this.intern = this.service.getUser();
     this.id  = this.intern.id!;
+    console.log(this.id);
+
   }
 }

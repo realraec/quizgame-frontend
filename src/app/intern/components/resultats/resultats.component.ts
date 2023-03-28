@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Progresses } from 'src/app/shared/models/progressesSuper.model';
 import { Resultat } from 'src/app/shared/models/resultat.model';
+// import { Progresses } from 'src/app/shared/models/progressesSuper.model';
+// import { Resultat } from 'src/app/shared/models/resultat.model';
 import { AnswerService } from 'src/app/shared/services/answer.service';
 
 @Component({
