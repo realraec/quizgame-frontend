@@ -86,6 +86,7 @@ export class QuestionProgressComponent implements OnInit {
 
     console.log("erreur" +this.idProgress);
 
+    
 
     this.questionService.saveRecord(questionId, progressId, this.pickedAnswersIds).subscribe({
       next: (data) => {

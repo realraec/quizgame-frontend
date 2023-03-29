@@ -11,7 +11,7 @@ import { AnswerService } from 'src/app/shared/services/answer.service';
   styleUrls: ['./resultats.component.scss']
 })
 export class ResultatsComponent implements OnInit{
-  scoreTotal!: number
+  scoreTotal: number = 0;
   listResultats!: Resultat;
   idResultat!: number
   constructor(private resultatsService: AnswerService, private route: ActivatedRoute){
