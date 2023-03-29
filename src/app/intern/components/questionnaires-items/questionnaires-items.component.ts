@@ -23,13 +23,16 @@ export class QuestionnairesItemsComponent implements OnInit{
   quizSub: Subscription | undefined;
   step: number = 1;
   totalQuestion!: number;
+  idProgress!: number;
   // @Input() quiz: Quiz | undefined
   constructor(private answer: AnswerService, private route: ActivatedRoute, private router: Router, private quizService: QuizService, private token: TokenStorageService){
   }
 
   ngOnInit(){
     this.personId = this.token.getUser().id;
-    this.idQuiz = +this.route.snapshot.params['id']
+    this.idQuiz = +this.route.snapshot.params['idQuiz']
+    this.idProgress = this.route.snapshot.params['idProgres'];
+
     console.log(this.idQuiz);
     this.quizSub = this.quizService.getAllQuizzes().subscribe({
       next: (data: Quiz[]) => {
@@ -65,6 +68,11 @@ export class QuestionnairesItemsComponent implements OnInit{
     this.router.navigateByUrl("/questions/progress")
   }
   onProgress(){
+    if( this.idProgress != undefined){
+
+      this.router.navigate(["/intern/questions/progress/"+this.idProgress])
+    }
+else{
     this.answer.createProgress(this.personId, this.idQuiz, 0).subscribe({
       next: (data) =>{
         this.progress = data;
@@ -76,5 +84,7 @@ export class QuestionnairesItemsComponent implements OnInit{
 
     }
     )
+
+  }
   }
 }

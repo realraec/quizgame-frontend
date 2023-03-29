@@ -12,7 +12,8 @@ import { ResultatsComponent } from './components/resultats/resultats.component';
 const routes: Routes = [
   {path:  '', component: InternComponent},
  {path:  'liste/questionnaires', component: InternComponent},
- {path:  'liste/questionnaires/:id', component: QuestionnairesItemsComponent},
+ {path:  'liste/questionnaires/:idQuiz', component: QuestionnairesItemsComponent},
+ {path:  'liste/questionnaires/:idQuiz/:idProgress', component: QuestionnairesItemsComponent},
  {path:  'questions/progress', component: QuestionProgressComponent},
  {path:  'questions/progress/:id', component: QuestionProgressComponent},
  {path: 'listQuestions/questions/resultats/:id', component: ResultatsComponent},

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Count } from 'src/app/shared/models/count.model';
 import { Intern } from 'src/app/shared/models/intern.model';
 import { Quiz } from 'src/app/shared/models/quiz.model';
+import { QuizForIntern } from 'src/app/shared/models/quizforintern.model';
 import { InternService } from 'src/app/shared/services/intern.service';
 import { QuizService } from 'src/app/shared/services/quiz.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
@@ -18,7 +19,7 @@ export class ListQuestionnairesComponent implements OnInit{
   intern!: Intern;
   id!: number;
   idIntern!: number
-  quizzes: Quiz[] = [];
+  quizzes: QuizForIntern[] = [];
   interns: Intern[] = [];
 
 
@@ -40,7 +41,7 @@ export class ListQuestionnairesComponent implements OnInit{
     // console.log(this.idIntern);
     console.log(this.id);
     this.internService.getAllQuizzesforIntern(this.id).subscribe({
-      next: (data: Quiz[]) =>{
+      next: (data) =>{
     // this.quizzes = data.filter(q => q.id === this.idIntern)
         this.quizzes = data
         console.log(this.quizzes)

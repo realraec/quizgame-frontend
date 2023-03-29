@@ -26,10 +26,10 @@
         <td>{{quiz.title}}</td>
         <td>{{quiz.summary}}</td>
         <td>
-          <div [routerLink]="['liste/questionnaires', quiz.id]">
-            <button *ngIf="quiz.state === 'NOT_STARTED'" type="button" class="btn demarrer">Démarrer</button>
-            <button *ngIf="quiz.state === 'STARTED'" type="button" class="btn continuer">Continuer</button>
-            <button disabled *ngIf="(quiz.state != 'STARTED' && quiz.state != 'NOT_STARTED')" type="button" class="btn btn-grey">Démmarer</button>
+          <div >
+            <button routerLink="liste/questionnaires/{{quiz.id}}"  *ngIf="quiz.state === 'NOT_STARTED'" type="button" class="btn demarrer">Démarrer</button>
+            <button routerLink="liste/questionnaires/{{quiz.id}}/{{quiz.progressId}}"  *ngIf="quiz.state === 'STARTED'" type="button" class="btn continuer">Continuer</button>
+            <button disabled *ngIf="(quiz.state != 'STARTED' && quiz.state != 'NOT_STARTED')" type="button" class="btn btn-grey">Démarrer</button>
           </div>
 
         </td>

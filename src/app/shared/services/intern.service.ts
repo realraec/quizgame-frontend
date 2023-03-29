@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Count } from '../models/count.model';
 import { Intern } from '../models/intern.model';
 import { Quiz } from '../models/quiz.model';
+import { QuizForIntern } from '../models/quizforintern.model';
 import { AbstractService } from './abstract.service';
 
 @Injectable({
@@ -51,7 +52,7 @@ getAllInternsById(id: number){
 }
 
   getAllQuizzesforIntern(id: number){
-    return this.http.get<Quiz[]>('http://localhost:8080/api/quizzes/forIntern/'+id, { headers: this.abstractService.getOption() } );
+    return this.http.get<QuizForIntern[]>('http://localhost:8080/api/quizzes/forIntern/'+id, { headers: this.abstractService.getOption() } );
 
   }
 

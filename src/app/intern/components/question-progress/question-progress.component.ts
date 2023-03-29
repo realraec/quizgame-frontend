@@ -56,11 +56,12 @@ export class QuestionProgressComponent implements OnInit {
     obs$.subscribe(d => {
       this.data = (this.duree!-d);
 
+      if (this.data === 0) {
+        this.onSaveForm()
+  
+      }
     });
-    if (this.data === 0) {
-      this.onSaveForm()
-
-    }
+   
 
     this.questionService.getQuestionInProgress(this.idProgress).subscribe({
       next: (data: ProgressQuestion) => {
@@ -88,9 +89,12 @@ export class QuestionProgressComponent implements OnInit {
 
     this.questionService.saveRecord(questionId, progressId, this.pickedAnswersIds).subscribe({
       next: (data) => {
-        console.log(this.pickedAnswersIds);
-          // window.location.reload()
+       
       },
+      complete: () =>{
+        window.location.reload();
+      }
+
 
     });
   }
