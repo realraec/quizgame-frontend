@@ -28,10 +28,10 @@ export class ListQuestionnairesComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.getIntern()
     this.idIntern = +this.route.snapshot.params['id']
     console.log(this.idIntern);
     // this.onGetAllInternsById(this.idIntern)
-    this.getIntern()
     this.onGetAllQuizzesforIntern()
   }
 

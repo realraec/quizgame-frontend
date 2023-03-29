@@ -29,14 +29,15 @@
      <div  class="d-flex justify-content-center btn-start mr-5 text-end">
 
       <button
-        [routerLink]="['/intern/questions/progress', quiz?.id]"
-        *ngIf="step === 1"
+      (click)="onProgress()"
 
         class="btn btn-warning mx-1 my-2"
       >
         Démarrer
       </button>
       <!-- <button
+        [routerLink]="['/intern/questions/progress', quiz?.id]"
+        
         [routerLink]="['/intern/questions/progress', quiz?.id]"
         *ngIf="step != 1"
 

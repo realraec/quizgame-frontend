@@ -46,7 +46,7 @@ export class QuestionProgressComponent implements OnInit {
     this.checkForm = fb.group({
     check: this.check
     });
-    this.idProgress = +this.route.snapshot.params['id'];
+    this.idProgress = this.route.snapshot.params['id'];
     console.log(this.idProgress);
 
   }
@@ -82,6 +82,9 @@ export class QuestionProgressComponent implements OnInit {
   onSaveForm() {
     const questionId = this.questionId!;
     const progressId = this.idProgress!;
+
+    console.log("erreur" +this.idProgress);
+
 
     this.questionService.saveRecord(questionId, progressId, this.pickedAnswersIds).subscribe({
       next: (data) => {

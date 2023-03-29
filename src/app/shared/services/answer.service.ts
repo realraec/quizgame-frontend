@@ -22,12 +22,12 @@ export class AnswerService {
   saveRecord(questionId: number, progressId: number, pickedAnswersIds: number[]): Observable<any> {
     const url = 'http://localhost:8080/api/records/createAndCheck';
 
-    const data = {
+    let data = {
       questionId: questionId,
       progressId: progressId,
       pickedAnswersIds:[]
     };
-    return this.http.post(url, data, { headers: this.abstractService.getOption() },);
+    return this.http.post(url,{questionId: questionId, progressId: progressId, pickedAnswersIds: pickedAnswersIds}, { headers: this.abstractService.getOption() },);
   }
 
 
@@ -37,6 +37,9 @@ export class AnswerService {
   // resultat des candidats
   getResultat(id: number){
     return this.http.get<Resultat>('http://localhost:8080/api/progresses/'+id, { headers: this.abstractService.getOption() })
+  }
+  createProgress(personId: number, quizId: number, score: number){
+    return this.http.post<Progresses>('http://localhost:8080/api/progresses/create',{dateAndTimeOfCompletion: null, score: score, personId: personId, quizId: quizId}, { headers: this.abstractService.getOption() })
   }
 
   /**

@@ -43,7 +43,7 @@
       *ngIf="lisQuestions && lisQuestions?.numberOfQuestionsLeft != 1"
       type="button"
       (click)="onSaveForm()"
-      [routerLink]="['/intern/questions/progress', idProgress]"
+      [routerLink]="['/intern/questions/progress', questionId]"
       class="btn btn-warning mx-1 my-2"
     >
       Continuer
@@ -52,7 +52,7 @@
       type="button"
       *ngIf="lisQuestions?.numberOfQuestionsLeft === 1"
       (click)="onSaveForm()"
-      [routerLink]="['/intern/listQuestions/questions/resultats/', idProgress]"
+      [routerLink]="['/intern/listQuestions/questions/resultats/', questionId]"
       type="submit"
       class="btn btn-danger mx-1 my-2"
     >
