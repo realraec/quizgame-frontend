@@ -59,6 +59,9 @@ export class QuestionProgressComponent implements OnInit {
       if (this.data === 0) {
         this.onSaveForm()
   
+        if(this.lisQuestions?.numberOfQuestionsLeft === 1){
+          this.router.navigate(["/intern/listQuestions/questions/resultats/"+this.idProgress])
+        }
       }
     });
    
