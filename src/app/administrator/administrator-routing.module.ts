@@ -10,7 +10,8 @@ import { UpdateQuizComponent } from './components/quiz/update-quiz/update-quiz.c
 import { ListQuestionComponent } from './components/quiz/questions/list-question/list-question.component';
 import { CreateQuestionComponent } from './components/quiz/questions/create-question/create-question.component';
 import { UpdateQuestionComponent } from './components/quiz/questions/update-question/update-question.component';
-import { UpdateAdminComponent } from './components/admin/update-admin.component';
+import { UpdateAdminComponent } from './components/admin/update/update-admin.component';
+import { UpdatePasswordComponent } from './components/admin/update-password/update-password.component';
 
 const routes: Routes = [
   { path: '', component: AdministratorComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'intern/create', component: CreateInternComponent },
   { path: 'intern/update/:id', component: UpdateInternComponent },
   { path: 'admin/update/:id', component: UpdateAdminComponent },
+  { path: 'admin/update/password/:id', component: UpdatePasswordComponent },
   { path: 'quiz/list', component: ListQuizComponent },
   { path: 'quiz/create', component: CreateQuizComponent },
   { path: 'quiz/update/:id', component: UpdateQuizComponent },

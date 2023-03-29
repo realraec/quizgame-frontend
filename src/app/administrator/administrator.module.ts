@@ -12,10 +12,11 @@ import { UpdateQuizComponent } from './components/quiz/update-quiz/update-quiz.c
 import { ListQuestionComponent } from './components/quiz/questions/list-question/list-question.component';
 import { CreateQuestionComponent } from './components/quiz/questions/create-question/create-question.component';
 import { UpdateQuestionComponent } from './components/quiz/questions/update-question/update-question.component';
-import { UpdateAdminComponent } from './components/admin/update-admin.component';
+import { UpdateAdminComponent } from './components/admin/update/update-admin.component';
+import { UpdatePasswordComponent } from './components/admin/update-password/update-password.component';
 
 @NgModule({
-  declarations: [AdministratorComponent, UpdateInternComponent, NavbarAdminComponent, ListInternComponent, ListQuizComponent, CreateInternComponent, CreateQuizComponent,  UpdateAdminComponent, UpdateQuizComponent, ListQuestionComponent, CreateQuestionComponent, UpdateQuestionComponent],
+  declarations: [AdministratorComponent, UpdatePasswordComponent, UpdateInternComponent, NavbarAdminComponent, ListInternComponent, ListQuizComponent, CreateInternComponent, CreateQuizComponent,  UpdateAdminComponent, UpdateQuizComponent, ListQuestionComponent, CreateQuestionComponent, UpdateQuestionComponent, UpdatePasswordComponent],
   imports: [SharedModule, AdministratorRoutingModule],
 })
 export class AdministratorModule {}
